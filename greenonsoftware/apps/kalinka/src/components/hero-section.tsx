@@ -1,50 +1,20 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
+import Image from 'next/image';
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoVisible, setIsVideoVisible] = useState(true);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVideoVisible(true);
-            videoRef.current?.play();
-          } else {
-            setIsVideoVisible(false);
-            videoRef.current?.pause();
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    if (videoRef.current) observer.observe(videoRef.current);
-
-    return () => {
-      if (videoRef.current) observer.unobserve(videoRef.current);
-    };
-  }, []);
-
   return (
     <section className="relative h-[600px] pt-16">
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/images/placeholder.svg"
-      >
-        <source
-          src="https://example.com/path-to-your-stock-video.mp4"
-          type="video/mp4"
+      <div className="absolute inset-0 w-full h-full">
+        <Image
+          src="/logo-bg.webp"
+          alt="Kalinka Hero Image"
+          layout="fill"
+          priority
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-      </video>
+      </div>
       <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
         <div className="text-center text-white">
           <h1 className="text-5xl font-bold mb-4">
