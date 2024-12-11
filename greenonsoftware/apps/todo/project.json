@@ -1,0 +1,9 @@
+{
+  "name": "todo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/todo",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project todo --web",
+  "targets": {}
+}
