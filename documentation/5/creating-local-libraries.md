@@ -2,3 +2,5 @@
 2. Here is what I've picked up in CLI: 
 
 ![alt text](image.png)
+
+3. Here you can display informations `nx show project name-of-stuff`. 
