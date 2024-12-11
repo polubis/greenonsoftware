@@ -1,0 +1,10 @@
+{
+  "name": "make-me-senior-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/make-me-senior-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["make-me-senior"],
+  "// targets": "to see all targets run: nx show project make-me-senior-e2e --web",
+  "targets": {}
+}
