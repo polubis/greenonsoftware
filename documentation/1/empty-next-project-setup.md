@@ -15,3 +15,5 @@
    ```
 
 > It's important to change to the directory containing the `nx.json` file. Without this, commands will not work. Additionally, you no longer need to use `npx` before commands, as everything is configured in the `nx.json` file.
+
+6. Running production build project locally `nx start todo`. Running it in development version `nx dev todo`.

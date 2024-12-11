@@ -3,4 +3,4 @@
 
 ![alt text](image.png)
 
-3. Here you can display informations `nx show project name-of-stuff`. 
+3. Here you can display informations `nx show project name-of-stuff` or `nx show project todo --web`.

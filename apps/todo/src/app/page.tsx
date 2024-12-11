@@ -106,7 +106,7 @@ export default function Index() {
       <section className="p-4">
         <ul className="min-h-screen grid gap-4 grid-cols-2 grid-rows-2">
           {board.map(({ id }, index) => (
-            <li key={id} className={c(`rounded-lg`, boardClasses[index].bg)}>
+            <li key={id} className={c(`rounded-xl shadow-xl`, boardClasses[index].bg)}>
               Do First
             </li>
           ))}
