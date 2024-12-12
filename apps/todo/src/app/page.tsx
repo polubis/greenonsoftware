@@ -93,7 +93,7 @@ const board: BoardViewModel = [
 
 export default function Index() {
   return (
-    <main>
+    <main className="bg-gradient-to-b min-h-screen from-white to-[#faf9f9]">
       {/* <section className="p-4">
         <ul className="min-h-screen grid gap-4 grid-cols-2 grid-rows-2">
           {board.map(({ id }, index) => (
@@ -104,13 +104,13 @@ export default function Index() {
         </ul>
       </section> */}
 
-      <section className="p-4">
+      <section className="p-4 fixed bottom-0 left-0 right-0 bg-white shadow-lg">
         <ul className="flex flex-col space-y-4">
-          {board.map(({ id, title, items, classes }, index) => (
-            <li key={id} className={c(`rounded-xl shadow-xl p-4`, classes)}>
-              <h6 className="text-xl font-bold">
+          {board.map(({ id, title, items, classes }) => (
+            <li key={id} className={c(`rounded-xl p-4`, classes)}>
+              <h4 className="text-xl font-bold">
                 {title} ({items.length})
-              </h6>
+              </h4>
             </li>
           ))}
         </ul>
