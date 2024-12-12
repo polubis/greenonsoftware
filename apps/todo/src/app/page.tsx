@@ -18,10 +18,13 @@ type BoardCell = {
 };
 type Board = BoardCell[];
 
-const board: Board = [
+type BoardViewModel = (BoardCell & { classes: string })[];
+
+const board: BoardViewModel = [
   {
     id: '1',
     title: 'Do First',
+    classes: 'bg-gradient-to-r from-[#ADD8E6] to-[#87CEEB]',
     items: [
       {
         id: '1',
@@ -38,6 +41,7 @@ const board: Board = [
   {
     id: '2',
     title: 'Shedule',
+    classes: 'bg-gradient-to-r from-[#FFDAB9] to-[#FFE4B5]',
     items: [
       {
         id: '3',
@@ -54,6 +58,7 @@ const board: Board = [
   {
     id: '3',
     title: 'Delegate',
+    classes: 'bg-gradient-to-r from-[#D3D3D3] to-[#90EE90]',
     items: [
       {
         id: '5',
@@ -70,6 +75,7 @@ const board: Board = [
   {
     id: '4',
     title: 'Eliminate',
+    classes: 'bg-gradient-to-r from-[#FFB6C1] to-[#DA70D6]',
     items: [
       {
         id: '7',
@@ -85,25 +91,10 @@ const board: Board = [
   },
 ];
 
-const boardClasses = [
-  {
-    bg: 'bg-rose-100',
-  },
-  {
-    bg: 'bg-emerald-100',
-  },
-  {
-    bg: 'bg-amber-100',
-  },
-  {
-    bg: 'bg-indigo-100',
-  },
-];
-
 export default function Index() {
   return (
     <main>
-      <section className="p-4">
+      {/* <section className="p-4">
         <ul className="min-h-screen grid gap-4 grid-cols-2 grid-rows-2">
           {board.map(({ id }, index) => (
             <li key={id} className={c(`rounded-xl shadow-xl`, boardClasses[index].bg)}>
@@ -111,7 +102,36 @@ export default function Index() {
             </li>
           ))}
         </ul>
+      </section> */}
+
+      <section className="p-4">
+        <ul className="flex flex-col space-y-4">
+          {board.map(({ id, title, items, classes }, index) => (
+            <li key={id} className={c(`rounded-xl shadow-xl p-4`, classes)}>
+              <h6 className="text-xl font-bold">
+                {title} ({items.length})
+              </h6>
+            </li>
+          ))}
+        </ul>
       </section>
+
+      {/* <ul className="fixed bottom-0 left-0 right-0">
+        {board.map(({ id }, index) => (
+          <li
+            key={id}
+            style={{
+              bottom: `-${60 * index}px`,
+            }}
+            className={c(
+              `absolute w-full right-0 h-[300px] rounded-2xl rounded-tr-none shadow-xl p-4`,
+              customizatonClasses[index]
+            )}
+          >
+            Do First
+          </li>
+        ))}
+      </ul> */}
     </main>
   );
 }
