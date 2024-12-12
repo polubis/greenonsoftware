@@ -18,13 +18,14 @@ type BoardCell = {
 };
 type Board = BoardCell[];
 
-type BoardViewModel = (BoardCell & { classes: string })[];
+type BoardViewModel = (Board[number] & { classes: string; opened: boolean })[];
 
 const board: BoardViewModel = [
   {
     id: '1',
     title: 'Do First',
     classes: 'bg-gradient-to-r from-[#FFB6C1] to-[#DA70D6]',
+    opened: true,
     items: [
       {
         id: '1',
@@ -42,6 +43,7 @@ const board: BoardViewModel = [
     id: '2',
     title: 'Shedule',
     classes: 'bg-gradient-to-r from-[#FFDAB9] to-[#FFE4B5]',
+    opened: true,
     items: [
       {
         id: '3',
@@ -59,6 +61,7 @@ const board: BoardViewModel = [
     id: '3',
     title: 'Delegate',
     classes: 'bg-gradient-to-r from-[#ADD8E6] to-[#87CEEB]',
+    opened: true,
     items: [
       {
         id: '5',
@@ -75,6 +78,7 @@ const board: BoardViewModel = [
   {
     id: '4',
     title: 'Eliminate',
+    opened: true,
     classes: 'bg-gradient-to-r from-[#D3D3D3] to-[#90EE90]',
     items: [
       {
@@ -94,13 +98,33 @@ const board: BoardViewModel = [
 export default function Index() {
   return (
     <main className="bg-gradient-to-b min-h-screen from-white to-[#faf9f9]">
-      <section className="p-4 fixed bottom-0 left-0 right-0 bg-white shadow-lg">
-        <ul className="flex flex-col space-y-4">
-          {board.map(({ id, title, items, classes }) => (
+      <section className="p-4 max-h-[50%] fixed overflow-auto bottom-0 left-0 right-0 shadow-lg">
+        <ul className="grid gap-4">
+          {board.map(({ id, title, items, classes, opened }) => (
             <li key={id} className={c(`rounded-xl p-4`, classes)}>
-              <h4 className="text-xl font-bold">
+              <h5 className="text-xl font-bold">
                 {title} ({items.length})
-              </h4>
+              </h5>
+              {opened && (
+                <ul className="grid gap-2 text-lg mt-4">
+                  {items.map((item) => (
+                    <li
+                      className="bg-white/40 rounded-xl px-4 py-2 relative overflow-hidden"
+                      key={item.id}
+                    >
+                      <div
+                        className="absolute left-0 w-full transition-all h-full bottom-0 bg-white/60"
+                        style={{
+                          transform: `translateX(-40%)`,
+                        }}
+                      />
+                      <div className="relative">
+                        <h6>{item.title}</h6>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
