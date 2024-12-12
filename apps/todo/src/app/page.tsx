@@ -24,7 +24,7 @@ const board: BoardViewModel = [
   {
     id: '1',
     title: 'Do First',
-    classes: 'bg-gradient-to-r from-[#ADD8E6] to-[#87CEEB]',
+    classes: 'bg-gradient-to-r from-[#FFB6C1] to-[#DA70D6]',
     items: [
       {
         id: '1',
@@ -58,7 +58,7 @@ const board: BoardViewModel = [
   {
     id: '3',
     title: 'Delegate',
-    classes: 'bg-gradient-to-r from-[#D3D3D3] to-[#90EE90]',
+    classes: 'bg-gradient-to-r from-[#ADD8E6] to-[#87CEEB]',
     items: [
       {
         id: '5',
@@ -75,7 +75,7 @@ const board: BoardViewModel = [
   {
     id: '4',
     title: 'Eliminate',
-    classes: 'bg-gradient-to-r from-[#FFB6C1] to-[#DA70D6]',
+    classes: 'bg-gradient-to-r from-[#D3D3D3] to-[#90EE90]',
     items: [
       {
         id: '7',
@@ -94,16 +94,6 @@ const board: BoardViewModel = [
 export default function Index() {
   return (
     <main className="bg-gradient-to-b min-h-screen from-white to-[#faf9f9]">
-      {/* <section className="p-4">
-        <ul className="min-h-screen grid gap-4 grid-cols-2 grid-rows-2">
-          {board.map(({ id }, index) => (
-            <li key={id} className={c(`rounded-xl shadow-xl`, boardClasses[index].bg)}>
-              Do First
-            </li>
-          ))}
-        </ul>
-      </section> */}
-
       <section className="p-4 fixed bottom-0 left-0 right-0 bg-white shadow-lg">
         <ul className="flex flex-col space-y-4">
           {board.map(({ id, title, items, classes }) => (
@@ -115,23 +105,6 @@ export default function Index() {
           ))}
         </ul>
       </section>
-
-      {/* <ul className="fixed bottom-0 left-0 right-0">
-        {board.map(({ id }, index) => (
-          <li
-            key={id}
-            style={{
-              bottom: `-${60 * index}px`,
-            }}
-            className={c(
-              `absolute w-full right-0 h-[300px] rounded-2xl rounded-tr-none shadow-xl p-4`,
-              customizatonClasses[index]
-            )}
-          >
-            Do First
-          </li>
-        ))}
-      </ul> */}
     </main>
   );
 }
