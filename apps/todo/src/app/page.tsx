@@ -1,4 +1,6 @@
 import { c } from '@greenonsoftware/c';
+import React from 'react';
+import { Calendar } from './components/calendar';
 
 const enum BoardItemStatus {
   ToDo = 'TO_DO',
@@ -98,6 +100,7 @@ const board: BoardViewModel = [
 export default function Index() {
   return (
     <main className="bg-gradient-to-b min-h-screen from-white to-[#faf9f9]">
+      <Calendar />
       <section className="p-4 max-h-[50%] fixed overflow-auto bottom-0 left-0 right-0 shadow-lg">
         <ul className="grid gap-4">
           {board.map(({ id, title, items, classes, opened }) => (
