@@ -99,9 +99,11 @@ const board: BoardViewModel = [
 
 export default function Index() {
   return (
-    <main className="bg-gradient-to-b min-h-screen from-white to-[#faf9f9]">
-      <Calendar />
-      <section className="p-4 max-h-[50%] fixed overflow-auto bottom-0 left-0 right-0 shadow-lg">
+    <main className="relative bg-gradient-to-b min-h-screen from-white to-[#faf9f9]">
+      <section className="bg-white border-b border-gray-600 h-full sticky top-0 left-0 z-10">
+        <Calendar />
+      </section>
+      <section className="p-4">
         <ul className="grid gap-4">
           {board.map(({ id, title, items, classes, opened }) => (
             <li key={id} className={c(`rounded-xl p-4`, classes)}>
