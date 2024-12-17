@@ -100,10 +100,10 @@ function Calendar({ rowsCount = ROWS_COUNT }: CalendarProps) {
           </button>
         </div>
       </header>
-      <div className="grid gap-1 grid-cols-7">
+      <div className="grid grid-cols-7">
         {dayNames.map((dayName) => (
           <div
-            className="p-2 bg-slate-100 flex items-center justify-center"
+            className="p-2 flex items-center justify-center font-medium"
             key={dayName}
           >
             {dayName}
@@ -111,7 +111,7 @@ function Calendar({ rowsCount = ROWS_COUNT }: CalendarProps) {
         ))}
         {getDays({ activeMonth, rowsCount }).map((day, index) => (
           <div
-            className="p-2 bg-slate-100 flex items-center justify-center"
+            className="p-2 flex items-center justify-center"
             key={index}
           >
             {day}
