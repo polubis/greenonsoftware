@@ -10,6 +10,7 @@ type CalendarProps = {
   rowsCount?: RowsCount;
 };
 
+const ROWS_COUNT = 6;
 const DEFAULT_DAY_NAMES = [
   `Sun`,
   `Mon`,
@@ -58,7 +59,7 @@ const getDays = ({
   return [...prevAndCurrentMonthDaysSum, ...nextMonthDays];
 };
 
-function Calendar({ rowsCount = 5 }: CalendarProps) {
+function Calendar({ rowsCount = ROWS_COUNT }: CalendarProps) {
   const now = new Date();
 
   const [dayNames] = React.useState(DEFAULT_DAY_NAMES);
