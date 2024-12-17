@@ -1,8 +1,14 @@
 'use client';
 
-import { format, getDaysInMonth } from 'date-fns';
+import { format, getDay, getDaysInMonth, startOfMonth } from 'date-fns';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
+
+type RowsCount = number;
+
+type CalendarProps = {
+  rowsCount?: RowsCount;
+};
 
 const DEFAULT_DAY_NAMES = [
   `Sun`,
@@ -22,16 +28,41 @@ const getDaysListInMonth = (date: Date): number[] => {
   return Array.from({ length: getDaysCountFromMonth(date) }, (_, i) => i + 1);
 };
 
-function Calendar() {
+const getDays = ({
+  activeMonth,
+  rowsCount,
+}: {
+  activeMonth: Date;
+  rowsCount: RowsCount;
+}): number[] => {
+  const [year, month] = [activeMonth.getFullYear(), activeMonth.getMonth()];
+  const prevMonthDays = getDaysListInMonth(new Date(year, month - 1)).reverse();
+  const currentMonthDays = getDaysListInMonth(activeMonth);
+  const currMonthStartDayIndex = getDay(startOfMonth(new Date(year, month, 1)));
+  const prevAndCurrentMonthDaysSum = [
+    ...Array.from(
+      { length: currMonthStartDayIndex },
+      (_, i) => prevMonthDays[i]
+    ).reverse(),
+    ...currentMonthDays,
+  ];
+  const nextMonthDays: number[] = Array.from(
+    {
+      length:
+        DEFAULT_DAY_NAMES.length * rowsCount -
+        prevAndCurrentMonthDaysSum.length,
+    },
+    (_, i) => i + 1
+  );
+
+  return [...prevAndCurrentMonthDaysSum, ...nextMonthDays];
+};
+
+function Calendar({ rowsCount = 5 }: CalendarProps) {
   const now = new Date();
 
   const [dayNames] = React.useState(DEFAULT_DAY_NAMES);
-  const [activeMonth, setActiveMonth] = React.useState<Date>(now);
-
-  const daysCountInMonth = React.useMemo(
-    () => getDaysListInMonth(activeMonth),
-    [activeMonth]
-  );
+  const [activeMonth, setActiveMonth] = React.useState(now);
 
   const goToPrevMonth = (): void => {
     setActiveMonth(
@@ -77,10 +108,10 @@ function Calendar() {
             {dayName}
           </div>
         ))}
-        {daysCountInMonth.map((day) => (
+        {getDays({ activeMonth, rowsCount }).map((day, index) => (
           <div
             className="p-2 bg-slate-100 flex items-center justify-center"
-            key={day}
+            key={index}
           >
             {day}
           </div>
