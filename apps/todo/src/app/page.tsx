@@ -1,6 +1,6 @@
 import { c } from '@greenonsoftware/c';
 import React from 'react';
-import { Calendar } from './components/calendar';
+import { Calendar } from './components/calendar/calendar';
 
 const enum BoardItemStatus {
   ToDo = 'TO_DO',
