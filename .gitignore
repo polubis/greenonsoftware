@@ -49,3 +49,4 @@ vite.config.*.timestamp*
 # Envs
 
 *.env.local
+*.env
