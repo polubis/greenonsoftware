@@ -1,14 +1,20 @@
+import { useAuthContext } from '../lib/auth';
+
 export default function Index() {
   /*
    * Replace the elements below with your own.
    *
    * Note: The corresponding styles are in the ./index.tailwind file.
    */
+  const auth = useAuthContext();
+  console.log(auth.user);
+
   return (
     <div>
       <div className="wrapper">
         <div className="container">
           <div id="welcome">
+            {auth.user ? <div>Signed in</div> : <div>Not signed in</div>}
             <h1>
               <span> Hello there, </span>
               Welcome diet-app 👋
