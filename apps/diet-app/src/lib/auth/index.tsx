@@ -1,5 +1,3 @@
-'use client';
-
 import { initializeApp, getApps } from 'firebase/app';
 import {
   getAuth,
@@ -13,6 +11,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useMemo,
   useState,
   type ReactNode,
 } from 'react';
@@ -46,30 +45,48 @@ const logInViaForm = async ({
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-type AuthContextState = {
-  user: User | null;
+type AuthContextState =
+  | { is: `idle` }
+  | {
+      is: `authorized`;
+      user: User;
+    }
+  | { is: `unauthorized` };
+
+type AuthContextValue = AuthContextState & {
+  logInViaForm: typeof logInViaForm;
+  logInViaGoogle: typeof logInViaGoogle;
 };
 
-const Ctx = createContext<AuthContextState | null>(null);
+const Ctx = createContext<AuthContextValue | null>(null);
 
 const useAuth = () => {
-  const [state, setState] = useState<AuthContextState>({ user: null });
+  const [state, setState] = useState<AuthContextState>({ is: `idle` });
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setState({ user });
+      setState(user ? { is: `authorized`, user } : { is: `unauthorized` });
     });
 
     return () => unsubscribe();
   }, []);
 
-  return [state] as const;
+  return state;
 };
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [state] = useAuth();
+  const state = useAuth();
 
-  return <Ctx.Provider value={state}>{children}</Ctx.Provider>;
+  const value: AuthContextValue = useMemo(
+    () => ({
+      ...state,
+      logInViaGoogle,
+      logInViaForm,
+    }),
+    [state]
+  );
+
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 };
 
 export const useAuthContext = () => {

@@ -1,5 +1,6 @@
-import { AuthProvider } from '../lib/auth';
 import './global.css';
+
+import { AppAuthProvider } from '../client/app-auth-provider';
 
 export const metadata = {
   title: 'Welcome to diet-app',
@@ -12,10 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <AuthProvider>
-      <html lang="en">
-        <body>{children}</body>
-      </html>
-    </AuthProvider>
+    <html lang="en">
+      <body>
+        <AppAuthProvider>{children}</AppAuthProvider>
+      </body>
+    </html>
   );
 }

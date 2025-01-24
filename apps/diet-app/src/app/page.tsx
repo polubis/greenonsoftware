@@ -1,20 +1,12 @@
-import { useAuthContext } from '../lib/auth';
+import { UserSection } from '../client/components/user-section';
 
 export default function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.tailwind file.
-   */
-  const auth = useAuthContext();
-  console.log(auth.user);
-
   return (
     <div>
       <div className="wrapper">
         <div className="container">
           <div id="welcome">
-            {auth.user ? <div>Signed in</div> : <div>Not signed in</div>}
+            <UserSection />
             <h1>
               <span> Hello there, </span>
               Welcome diet-app 👋
