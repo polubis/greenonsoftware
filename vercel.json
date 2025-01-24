@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "nx.json",
+            "use": "@vercel/nx"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/diet-app/(.*)",
+            "dest": "apps/diet-app/$1"
+        },
+        {
+            "src": "/todo/(.*)",
+            "dest": "apps/todo/$1"
+        }
+    ],
+    "buildCommand": "nx run-many -t build",
+    "outputDirectory": "dist"
+}
