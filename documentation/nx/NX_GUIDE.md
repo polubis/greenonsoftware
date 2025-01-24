@@ -14,7 +14,7 @@
 
 ## Adding a dependency (installing a package)
 
-To install a package
+To install a packaged
 
 ```
 npm i dep --save // for deps
