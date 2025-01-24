@@ -8,9 +8,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
-  type Unsubscribe,
   type User,
-  UserCredential,
 } from 'firebase/auth';
 
 const app =
@@ -28,7 +26,7 @@ const app =
 const auth = getAuth(app);
 const googleAuthProvider = new GoogleAuthProvider();
 
-const logInViaGoogle = async (): Promise<UserCredential> => {
+const logInViaGoogle = async () => {
   return signInWithPopup(auth, googleAuthProvider);
 };
 
@@ -38,7 +36,7 @@ const logInViaForm = async ({
 }: {
   email: string;
   password: string;
-}): Promise<UserCredential> => {
+}) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
@@ -46,6 +44,8 @@ const onAuthChange = (
   nextOrObserver: NextOrObserver<User>,
   error?: ErrorFn,
   completed?: CompleteFn
-): Unsubscribe => onAuthStateChanged(auth, nextOrObserver, error, completed);
+) => onAuthStateChanged(auth, nextOrObserver, error, completed);
 
-export { logInViaGoogle, onAuthChange, logInViaForm };
+const useAuth = () => {};
+
+export { useAuth };
