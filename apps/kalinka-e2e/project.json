@@ -1,9 +1,0 @@
-{
-  "name": "kalinka-e2e",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/kalinka-e2e/src",
-  "tags": [],
-  "implicitDependencies": ["kalinka"],
-  "// targets": "to see all targets run: nx show project kalinka-e2e --web",
-  "targets": {}
-}
