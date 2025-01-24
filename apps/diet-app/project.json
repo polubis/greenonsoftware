@@ -1,9 +1,9 @@
 {
-  "name": "kalinka",
+  "name": "diet-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/kalinka",
+  "sourceRoot": "apps/diet-app",
   "projectType": "application",
   "tags": [],
-  "// targets": "to see all targets run: nx show project kalinka --web",
+  "// targets": "to see all targets run: nx show project diet-app --web",
   "targets": {}
 }
