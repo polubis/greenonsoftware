@@ -1,5 +1,17 @@
 # All commands and stuff related to working with NX
 
+## How to connect NX, Next.js and Vercel to have deployments?
+
+1. Create a project from repository.
+2. Add following path and configuration.
+
+![alt text](image2.png)
+![alt text](image3.png)
+
+## How to see build/development paths for deploys?
+
+1. Type `nx show project app-name --web`.
+
 ## Connecting NX to the cloud?
 
 1. If during any command there will be a `401` warning, then you can connect your project to the cloud.
