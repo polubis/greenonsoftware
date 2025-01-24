@@ -1,6 +1,6 @@
 import './global.css';
 
-import { AppAuthProvider } from '../client/app-auth-provider';
+import { AuthProvider } from '../client/auth-provider';
 
 export const metadata = {
   title: 'Welcome to diet-app',
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppAuthProvider>{children}</AppAuthProvider>
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

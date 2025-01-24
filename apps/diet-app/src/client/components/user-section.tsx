@@ -1,9 +1,9 @@
 'use client';
 
-import { useAppAuthContext } from '../app-auth-provider';
+import { useAuthContext } from '../auth-provider';
 
 export const UserSection = () => {
-  const auth = useAppAuthContext();
+  const auth = useAuthContext();
 
   if (auth.is === `idle`) return <div>Authorizing</div>;
 
