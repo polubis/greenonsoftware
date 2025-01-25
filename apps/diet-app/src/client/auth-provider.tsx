@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   type User,
 } from 'firebase/auth';
 import {
@@ -47,6 +48,16 @@ const logInViaForm = async ({
   return signInWithEmailAndPassword(auth, email, password);
 };
 
+const logOut = async () => {
+  return signOut(auth);
+};
+
+const actions = {
+  logInViaGoogle,
+  logInViaForm,
+  logOut,
+};
+
 type AuthContextState =
   | { is: `idle` }
   | {
@@ -55,10 +66,7 @@ type AuthContextState =
     }
   | { is: `unauthorized` };
 
-type AuthContextValue = AuthContextState & {
-  logInViaForm: typeof logInViaForm;
-  logInViaGoogle: typeof logInViaGoogle;
-};
+type AuthContextValue = AuthContextState & typeof actions;
 
 const Ctx = createContext<AuthContextValue | null>(null);
 
@@ -82,8 +90,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const value: AuthContextValue = useMemo(
     () => ({
       ...state,
-      logInViaGoogle,
-      logInViaForm,
+      ...actions,
     }),
     [state]
   );

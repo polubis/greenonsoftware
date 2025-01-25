@@ -2,7 +2,7 @@
 
 import admin from 'firebase-admin';
 
-const getFirebaseAdmin = () => {
+const getAdmin = () => {
   if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
     throw new Error('Firebase service account key is missing');
   }
@@ -24,5 +24,5 @@ const getFirebaseAdmin = () => {
   return admin;
 };
 
-export const auth = () => getFirebaseAdmin().auth();
-export const db = () => getFirebaseAdmin().firestore();
+export const getAuth = () => getAdmin().auth();
+export const getDb = () => getAdmin().firestore();
