@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
+import { getApp } from './app';
 
 function getToken(request: Request) {
   const token = request.headers.get('Authorization')?.split('Bearer ')[1];
   return token;
 }
 
-export function authenticate(request: Request) {
+export async function authenticate(request: Request) {
   const token = getToken(request);
 
   if (!token) {
@@ -17,4 +18,8 @@ export function authenticate(request: Request) {
       { status: 401, headers: { 'Content-Type': 'application/json' } }
     );
   }
+
+  const user = await getApp().auth().verifyIdToken(token);
+
+  console.log(user);
 }
