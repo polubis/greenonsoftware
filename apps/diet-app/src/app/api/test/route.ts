@@ -4,7 +4,7 @@ import { app } from '../../../server/app';
 
 export async function POST(request: Request): Promise<Response> {
   try {
-    const user = await authenticate(request);
+    await authenticate(request);
 
     const data = (
       await app().firestore().collection(`test`).doc(`dasdsdasda`).get()
