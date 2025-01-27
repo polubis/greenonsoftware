@@ -50,3 +50,4 @@ vite.config.*.timestamp*
 
 *.env.local
 *.env
+service-account.json
