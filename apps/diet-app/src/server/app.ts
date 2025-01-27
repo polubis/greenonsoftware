@@ -4,7 +4,7 @@ function formatPrivateKey(key: string) {
   return key.replace(/\\n/g, '\n');
 }
 
-export function getApp() {
+export function app() {
   const params = {
     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
     privateKey: formatPrivateKey(process.env.FIREBASE_PRIVATE_KEY ?? ``),

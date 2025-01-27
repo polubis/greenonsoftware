@@ -1,4 +1,4 @@
-import { getApp } from './app';
+import { app } from './app';
 
 function getToken(request: Request) {
   return request.headers.get('Authorization')?.split('Bearer ')[1];
@@ -12,7 +12,7 @@ export async function authenticate(request: Request) {
   }
 
   try {
-    return getApp().auth().verifyIdToken(token);
+    return app().auth().verifyIdToken(token);
   } catch {
     throw Error(`Access denied`);
   }

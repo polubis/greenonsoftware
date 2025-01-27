@@ -1,14 +1,32 @@
 import { NextResponse } from 'next/server';
 import { authenticate } from '../../../server/auth';
+import { app } from '../../../server/app';
 
 export async function POST(request: Request): Promise<Response> {
-  authenticate(request);
+  try {
+    const user = await authenticate(request);
 
-  return new NextResponse(
-    JSON.stringify({ message: 'Data successfully received', data: null }),
-    {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    }
-  );
+    const data = (
+      await app().firestore().collection(`test`).doc(`dasdsdasda`).get()
+    ).data();
+
+    return new NextResponse(
+      JSON.stringify({ message: 'Data successfully received', data }),
+      {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
+  } catch (error) {
+    return new NextResponse(
+      JSON.stringify({
+        message: 'Error processing the request',
+        error: (error as Error).message,
+      }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
+  }
 }
