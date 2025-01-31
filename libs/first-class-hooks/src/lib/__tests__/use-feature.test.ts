@@ -2,6 +2,21 @@ import { renderHook, act } from '@testing-library/react';
 import { useFeature } from '../use-feature';
 
 describe(`${useFeature.name}`, () => {
+  it('should allow to pass generic data shape', () => {
+    type User = { id: number };
+    const { result } = renderHook(() => useFeature<User>());
+
+    expect(result.current).toEqual(expect.objectContaining({ is: 'off' }));
+
+    act(() => {
+      result.current.on({ id: 0 });
+    });
+
+    expect(result.current).toEqual(
+      expect.objectContaining({ is: 'on', data: { id: 0 } })
+    );
+  });
+
   it('should return the correct initial state (default off)', () => {
     const { result } = renderHook(() => useFeature());
     expect(result.current).toEqual(expect.objectContaining({ is: 'off' }));
