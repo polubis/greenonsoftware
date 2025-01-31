@@ -20,8 +20,8 @@
 ## How to remove existing application?
 
 1. Type a command: `nx g remove app-name`
-   - If an application is dependency you need to remove connection first - usually remove project or import paths 
-   ![alt text](image1.png)
+   - If an application is dependency you need to remove connection first - usually remove project or import paths
+     ![alt text](image1.png)
 2. Confirm and remove app
 
 ## Adding a dependency (installing a package)
@@ -39,7 +39,7 @@ npm i dep --save --legacy-peer-deps
 ## How to create a local library?
 
 1. To generate a library to be used internally in the monorepo, type `nx g @nx/js:lib libs/name-of-lib`.
-2. Here is what I've picked up in CLI: 
+2. Here is what I've picked up in CLI:
 
 ![alt text](image.png)
 
@@ -58,48 +58,59 @@ npm i dep --save --legacy-peer-deps
 
 ## How to migrate to new NX version?
 
-1. Navigate to the `greenonsoftware` directory where the `package.json` file is located.  
-2. Verify the required Node.js version [compatibility](https://nx.dev/changelog). Install required Node version with [NVM](https://github.com/nvm-sh/nvm). In my case it is: `22.12.0`. Then install the latest version of NX globally:  
+1. Navigate to the `greenonsoftware` directory where the `package.json` file is located.
+2. Verify the required Node.js version [compatibility](https://nx.dev/changelog). Install required Node version with [NVM](https://github.com/nvm-sh/nvm). In my case it is: `22.12.0`. Then install the latest version of NX globally:
+
    ```bash
    npm install -g nx@latest
-   ```  
-   You can confirm the installation by typing:  
+   ```
+
+   You can confirm the installation by typing:
+
    ```bash
    nx --version
-   ```  
+   ```
 
    Example output:
+
    ```md
    Nx Version:
+
    - Local: v20.0.12
    - Global: v20.2.1
    ```
 
-3. Install the latest NX version locally by running:  
+3. Install the latest NX version locally by running:
+
    ```bash
    npm install nx@latest --save-dev
-   ```  
-   This will update the `nx` version in your `package.json`. For example, update:  
+   ```
+
+   This will update the `nx` version in your `package.json`. For example, update:
+
    ```json
    // From "v20.0.12" to:
    "nx": "^20.2.1"
    ```
 
-4. Run the migration script:  
+4. Run the migration script:
+
    ```bash
    npx nx migrate --run-migrations
-   ```  
+   ```
+
    Note: This process might take some time.
 
 5. Ensure that the NX migration script supports your tech stack. Avoid making manual updates unless necessary! Doing so could disrupt package maintenance. If you need to update or install specific packages (e.g., utility libraries), do so manually as a last resort.
 
-6. If the migration is successful, run:  
+6. If the migration is successful, run:
+
    ```bash
    npm install
    npx nx migrate
-   ```  
+   ```
 
-7. If no further changes are needed, you’ll see an output like the following image. In some cases, it may prompt you with questions or make file changes.  
+7. If no further changes are needed, you’ll see an output like the following image. In some cases, it may prompt you with questions or make file changes.
 
 ![Migration success screenshot](1.png)
 
@@ -134,5 +145,6 @@ npm i dep --save --legacy-peer-deps
 
 1. Run `nx build name-of-lib`.
 2. Find library folder here -> ![alt text](image4.png)
+3. Change directory to via `cd libs/name-of-lib`, and run `npm publish --access public`
 
 ## FAQs
