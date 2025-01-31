@@ -45,6 +45,8 @@ npm i dep --save --legacy-peer-deps
 
 3. Here you can display informations `nx show project name-of-stuff` or `nx show project todo --web`.
 
+> For more advanced setup read [this article](https://4markdown.com/publishing-nx-generated-typescript-libraries-on-npm/).
+
 ## How to create a new application?
 
 1. Go to directory with `package.json`.
