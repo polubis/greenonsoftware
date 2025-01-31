@@ -125,4 +125,9 @@ npm i dep --save --legacy-peer-deps
 
 6. Running production build project locally `nx start todo`. Running it in development version `nx dev todo`.
 
+## How to run jest/vitest tests?
+
+1. Type command `nx test name-of-project`.
+2. To run it with **watch mode** run `nx test name-of-project --watch`.
+
 ## FAQs
