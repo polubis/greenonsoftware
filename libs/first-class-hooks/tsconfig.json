@@ -6,7 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "types": ["vite/client", "vitest"],
-    "declaration": true
+    "declaration": true,
   },
   "files": [],
   "include": [],
