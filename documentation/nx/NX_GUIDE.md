@@ -130,4 +130,9 @@ npm i dep --save --legacy-peer-deps
 1. Type command `nx test name-of-project`.
 2. To run it with **watch mode** run `nx test name-of-project --watch`.
 
+## How to build and deploy publishable library on npm?
+
+1. Run `nx build name-of-lib`.
+2. Find library folder here -> ![alt text](image4.png)
+
 ## FAQs
