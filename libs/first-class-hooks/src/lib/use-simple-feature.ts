@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import type { Setter, SimpleFeature, SimpleFeatureState } from './defs';
 
 const useSimpleFeature = (
   defaultState: Setter<SimpleFeatureState> = false
 ): SimpleFeature => {
-  const initState = React.useRef(defaultState);
-  const [isOn, setIsOn] = React.useState(defaultState);
+  const [initState] = useState(defaultState);
+  const [isOn, setIsOn] = useState(initState);
 
   return useMemo(
     () => ({
@@ -22,10 +22,10 @@ const useSimpleFeature = (
         setIsOn((prevIsOpen) => !prevIsOpen);
       },
       reset: () => {
-        setIsOn(initState.current);
+        setIsOn(initState);
       },
     }),
-    [isOn]
+    [isOn, initState]
   );
 };
 
