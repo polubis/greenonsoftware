@@ -45,6 +45,8 @@ npm i dep --save --legacy-peer-deps
 
 3. Here you can display informations `nx show project name-of-stuff` or `nx show project todo --web`.
 
+> For more advanced setup read [this article](https://4markdown.com/publishing-nx-generated-typescript-libraries-on-npm/).
+
 ## How to create a new application?
 
 1. Go to directory with `package.json`.
@@ -122,5 +124,15 @@ npm i dep --save --legacy-peer-deps
 > It's important to change to the directory containing the `nx.json` file. Without this, commands will not work. Additionally, you no longer need to use `npx` before commands, as everything is configured in the `nx.json` file.
 
 6. Running production build project locally `nx start todo`. Running it in development version `nx dev todo`.
+
+## How to run jest/vitest tests?
+
+1. Type command `nx test name-of-project`.
+2. To run it with **watch mode** run `nx test name-of-project --watch`.
+
+## How to build and deploy publishable library on npm?
+
+1. Run `nx build name-of-lib`.
+2. Find library folder here -> ![alt text](image4.png)
 
 ## FAQs

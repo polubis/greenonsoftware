@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@greenonsoftware/c": ["libs/c/src/index.ts"]
+      "@greenonsoftware/c": ["libs/c/src/index.ts"],
+      "@greenonsoftware/first-class-hooks": [
+        "libs/first-class-hooks/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

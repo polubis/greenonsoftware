@@ -1,0 +1,9 @@
+{
+  "name": "first-class-hooks",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/first-class-hooks/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project first-class-hooks --web",
+  "targets": {}
+}

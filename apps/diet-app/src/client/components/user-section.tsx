@@ -1,8 +1,11 @@
 'use client';
 
 import { useAuthContext } from '../auth-provider';
+import { useSimpleFeature } from '@greenonsoftware/first-class-hooks';
 
 export const UserSection = () => {
+  const feature = useSimpleFeature();
+
   const auth = useAuthContext();
 
   let content = <div>Authorizing</div>;
@@ -22,15 +25,14 @@ export const UserSection = () => {
         <button
           onClick={async () => {
             const token = await auth.user.getIdToken();
-            const response = await fetch('/api/test', {
+            await fetch('/api/test', {
               method: 'POST',
               headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
               },
             });
-
-            console.log(response);
+            feature.on();
           }}
         >
           Call endpoint
