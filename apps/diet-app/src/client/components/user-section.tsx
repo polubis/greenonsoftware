@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuthContext } from '../auth-provider';
-import { useSimpleFeature } from '@greenonsoftware/first-class-hooks';
+import { useSimpleFeature } from '@greenonsoftware/react-kit';
 
 export const UserSection = () => {
   const feature = useSimpleFeature();
