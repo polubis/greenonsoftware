@@ -141,10 +141,20 @@ npm i dep --save --legacy-peer-deps
 1. Type command `nx test name-of-project`.
 2. To run it with **watch mode** run `nx test name-of-project --watch`.
 
-## How to build and deploy publishable library on npm?
+## How to generate a React library from scratch and deploy on npm?
 
-1. Run `nx build name-of-lib`.
-2. Find library folder here -> ![alt text](image4.png)
-3. Change directory to via `cd libs/name-of-lib`, and run `npm publish --access public`
+1. Run
+
+```cmd
+nx g @nx/react:library libs/my-hooks \
+  --directory=packages \
+  --importPath=@yourorg/my-hooks \
+  --publishable \
+  --buildable
+```
+
+2. Run `nx build name-of-lib`.
+3. Find library folder here -> ![alt text](image4.png)
+4. Change directory to via `cd libs/name-of-lib`, and run `npm publish --access public`
 
 ## FAQs
