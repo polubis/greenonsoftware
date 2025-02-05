@@ -1,4 +1,4 @@
-# @greenonsoftware/first-class-hooks
+# @greenonsoftware/react-kit
 
 A collection of first-class React hooks to enhance your application's functionality with minimal setup.
 
@@ -7,13 +7,13 @@ A collection of first-class React hooks to enhance your application's functional
 You can install the package using npm or yarn:
 
 ```bash
-npm install @greenonsoftware/first-class-hooks
+npm install @greenonsoftware/react-kit
 ```
 
 or
 
 ```bash
-yarn add @greenonsoftware/first-class-hooks
+yarn add @greenonsoftware/react-kit
 ```
 
 ## 1. `useSimpleFeature` - show/hide UI and manage simple features
@@ -21,7 +21,7 @@ yarn add @greenonsoftware/first-class-hooks
 This hook provides a simple way to manage a boolean state with easy-to-use functions to toggle, set, or reset the state.
 
 ```tsx
-import { useSimpleFeature } from '@greenonsoftware/first-class-hooks';
+import { useSimpleFeature } from '@greenonsoftware/react-kit';
 
 const MyComponent = (props: { flag: boolean }) => {
   const modal = useSimpleFeature();
@@ -54,7 +54,7 @@ This hooks is enhanced version of `useSimpleFeature`. In addition, it allows you
 that is determined by generic parameter.
 
 ```tsx
-import { useFeature } from '@greenonsoftware/first-class-hooks';
+import { useFeature } from '@greenonsoftware/react-kit';
 
 type UserConfig = { id: number };
 
