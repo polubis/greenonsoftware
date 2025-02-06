@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import { AddBtn, BarChart, Book, Plan, ShoppingList } from './icons';
+import { AddBtn, BarChart, Book, Plan, ShoppingList } from '../icons/icons';
 
 const liStyle = 'flex flex-col items-center justify-center';
 const btnStyle = 'flex flex-col items-center justify-center focus:outline-none';
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 w-screen bg-white">
+    <footer className="fixed bottom-0 left-0 w-screen max-w-md bg-white">
       <ul className="flex items-center justify-around p-4">
         <li className={liStyle}>
           <button
