@@ -2,7 +2,7 @@ import React from 'react';
 import { Fire, Flag, Fork } from '../icons/icons';
 
 const CaloriesBar = () => {
-  const buttonStyle = 'p-2 border rounded-full';
+  const divRoundStyle = 'p-2 border rounded-full';
   const pStyle = 'flex items-center gap-4';
   const liStyle = 'flex items-center gap-2';
 
@@ -29,15 +29,15 @@ const CaloriesBar = () => {
       </div>
       <ul className="flex justify-around">
         <li className={liStyle}>
-          <button className={buttonStyle}></button>
+          <div className={divRoundStyle}></div>
           P: 0/112
         </li>
         <li className={liStyle}>
-          <button className={buttonStyle}></button>
+          <div className={divRoundStyle}></div>
           F: 0/56
         </li>
         <li className={liStyle}>
-          <button className={buttonStyle}></button>
+          <div className={divRoundStyle}></div>
           C: 0/150
         </li>
       </ul>
