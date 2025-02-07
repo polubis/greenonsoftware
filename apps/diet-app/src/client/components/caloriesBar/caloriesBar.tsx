@@ -7,7 +7,7 @@ const CaloriesBar = () => {
   const liStyle = 'flex items-center gap-2';
 
   return (
-    <div className="flex flex-col gap-6 p-4 mt-3 bg-white rounded-lg ">
+    <div className="flex flex-col gap-6 p-4 bg-white rounded-lg ">
       <div className='flex flex-col gap-2'>
         <div className="h-1 w-full bg-[#88D504]/50 rounded"></div>
         <div className="flex justify-between real">
