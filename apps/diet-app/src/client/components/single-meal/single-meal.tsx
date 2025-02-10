@@ -1,6 +1,6 @@
 import React from 'react';
-import { Croissant, Apple, Cookie, Utensils } from 'lucide-react'; // Import ikon
-import { SettingsDots } from '../icons/icons';
+import { Croissant, Apple, Cookie, Utensils, EllipsisVertical } from 'lucide-react'; // Import ikon
+
 
 interface MealProps {
   mealType: string;
@@ -38,7 +38,7 @@ export default function Meal({ mealType }: MealProps) {
           <Icon className="w-6 h-6" />
           <h2 className="text-lg font-bold">{mealName}</h2>
         </div>
-        <SettingsDots />
+        <EllipsisVertical/>
       </div>
       <div className="flex gap-2 text-sm font-light">
         <p>&lt; 15min</p>
