@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="wzxpCwBECQs7uNdyycSg" name="Page-1">
-        <mxGraphModel dx="502" dy="269" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="552" dy="272" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -28,7 +28,7 @@
                     <mxGeometry y="180" width="390" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="26" value="collection (user-diets)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="180" y="160" width="140" height="30" as="geometry"/>
+                    <mxGeometry x="170" y="180" width="140" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" value="uid (user)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="260" y="220" width="60" height="30" as="geometry"/>
@@ -47,7 +47,7 @@
                 <mxCell id="32" value="uid (diet)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="300" y="340" width="90" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="44" style="edgeStyle=none;html=1;" edge="1" parent="1" source="33">
+                <mxCell id="44" style="edgeStyle=none;html=1;" parent="1" source="33" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="530" y="395" as="targetPoint"/>
                     </mxGeometry>
@@ -76,22 +76,22 @@
                 <mxCell id="40" value="ingredients" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="1080" y="290" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="42" value="comments (collection)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="42" value="comments (collection)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="1080" y="330" width="120" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" value="rates (collection)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="43" value="rates (collection)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="1080" y="370" width="120" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="45" value="goal (1,2,3)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="45" value="goal (1,2,3)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="560" y="380" width="90" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="46" value="sex (w,m)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="46" value="sex (w,m)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="560" y="410" width="90" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="47" value="height" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="47" value="height" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="560" y="440" width="90" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="48" value="weight" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="48" value="weight" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="560" y="470" width="90" height="30" as="geometry"/>
                 </mxCell>
             </root>
