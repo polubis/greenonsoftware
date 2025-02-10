@@ -1,0 +1,77 @@
+<mxfile host="65bd71144e">
+    <diagram id="wzxpCwBECQs7uNdyycSg" name="Page-1">
+        <mxGraphModel dx="1155" dy="470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" value="Users (maintained by Google Cloud)" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="550" y="60" width="390" height="210" as="geometry">
+                        <mxRectangle x="180" y="90" width="210" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="(unique) uid" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry y="30" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="email" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry y="60" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="avatar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry y="90" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="username" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry y="120" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="created_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry y="150" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="...others Google Auth or Facebook auth related" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry y="180" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="collection (user-diets)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="160" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="uid (user)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="220" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=none;html=1;" edge="1" parent="1" target="27">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="550" y="100" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="diets_count" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="260" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="diets (collection)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="300" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="uid (diet)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="340" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="input" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="380" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="meals (object)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="420" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="[date] -&amp;gt; meals_list" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="460" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="collection (recipes)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1070" y="130" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="uid" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1060" y="170" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="steps" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1070" y="210" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="macros" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1080" y="250" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="ingredients" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1080" y="290" width="60" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
