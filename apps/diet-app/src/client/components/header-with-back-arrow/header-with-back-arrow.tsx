@@ -1,9 +1,9 @@
 import { ArrowLeft } from 'lucide-react';
 
-export default function HeaderWithBackArrow({ title }: { title: string }) {
+export default function HeaderWithBackArrow({ title, prevStep }: { title: string, prevStep: () => void }) {
   return (
     <div className="flex gap-6">
-      <div>
+      <div onClick={prevStep}>
         <ArrowLeft />
       </div>
       <div>

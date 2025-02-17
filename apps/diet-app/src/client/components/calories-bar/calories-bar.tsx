@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fire, Flag, Fork } from '../icons/icons';
+import { Fire, Flag, Fork } from '../calendar/icons/icons';
 
 const CaloriesBar = () => {
   const divRoundStyle = 'p-2 border rounded-full';
@@ -8,7 +8,7 @@ const CaloriesBar = () => {
 
   return (
     <div className="flex flex-col gap-6 p-4 bg-white rounded-lg ">
-      <div className='flex flex-col gap-2'>
+      <div className="flex flex-col gap-2">
         <div className="h-1 w-full bg-[#88D504]/50 rounded"></div>
         <div className="flex justify-between real">
           <div className="flex gap-4">

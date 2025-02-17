@@ -1,7 +1,13 @@
 'use client';
 
 import React from 'react';
-import { AddBtn, BarChart, Book, Plan, ShoppingList } from '../icons/icons';
+import {
+  AddBtn,
+  BarChart,
+  Book,
+  Plan,
+  ShoppingList,
+} from '../calendar/icons/icons';
 
 const liStyle = 'flex flex-col items-center justify-center';
 const btnStyle = 'flex flex-col items-center justify-center focus:outline-none';

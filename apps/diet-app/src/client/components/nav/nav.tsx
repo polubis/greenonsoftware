@@ -1,5 +1,5 @@
 import React from 'react';
-import { Profile } from '../icons/icons';
+import { Profile } from '../calendar/icons/icons';
 
 export default function Nav() {
   return (

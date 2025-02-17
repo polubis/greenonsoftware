@@ -3,7 +3,7 @@ import Wrapper from '../../client/components/wrapper/wrapper';
 
 export default function DietPersonalization() {
   return (
-    <section>
+    <section className="bg-gray-100 ">
       <Wrapper>
         <DietPersonalizationForm />
       </Wrapper>

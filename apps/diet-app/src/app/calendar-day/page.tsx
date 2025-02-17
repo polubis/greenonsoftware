@@ -8,7 +8,7 @@ import Meal from '../../client/components/single-meal/single-meal';
 
 export default function CalendarDay() {
   return (
-    <div className="bg-gray-100">
+    <div className="pb-20 bg-gray-100">
       <Wrapper>
         <div className="flex flex-col gap-4 ">
           <Nav />
