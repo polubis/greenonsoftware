@@ -1,5 +1,19 @@
 import { useMemo, useState } from 'react';
-import type { Setter, SimpleFeature, SimpleFeatureState } from './defs';
+
+type Setter<TState> = TState | (() => TState);
+
+type SimpleFeatureState = boolean;
+type SimpleFeatureActions = {
+  on(): void;
+  off(): void;
+  toggle(): void;
+  reset(): void;
+  set(setter: Setter<SimpleFeatureState>): void;
+};
+type SimpleFeature = SimpleFeatureActions & {
+  isOff: boolean;
+  isOn: boolean;
+};
 
 const useSimpleFeature = (
   defaultState: Setter<SimpleFeatureState> = false
