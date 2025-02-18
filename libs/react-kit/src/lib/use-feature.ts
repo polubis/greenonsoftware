@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useState, useMemo } from 'react';
 
 type Setter<TState> = TState | (() => TState);
 
@@ -17,8 +17,8 @@ type Feature<TData> = FeatureState<TData> & FeatureActions<TData>;
 const useFeature = <TData>(
   defaultState: Setter<FeatureState<TData>> = { is: `off` }
 ): Feature<TData> => {
-  const [initState] = React.useState(defaultState);
-  const [state, setState] = React.useState(initState);
+  const [initState] = useState(defaultState);
+  const [state, setState] = useState(initState);
 
   return useMemo(
     () => ({

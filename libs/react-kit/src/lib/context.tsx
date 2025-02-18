@@ -4,21 +4,23 @@ import { type ReactNode, useContext, createContext, useMemo } from 'react';
 const context = <TValueHook extends () => any>(useValueHook: TValueHook) => {
   type TContextValue = ReturnType<TValueHook>;
 
-  const Context = createContext<TContextValue | null>(null);
+  const DynamicContext = createContext<TContextValue | null>(null);
 
-  Context.displayName = 'CustomContext';
+  DynamicContext.displayName = 'DynamicContext';
 
-  const Provider = ({ children }: { children: ReactNode }) => {
+  const DynamicProvider = ({ children }: { children: ReactNode }) => {
     const value = useValueHook();
     const memoizedValue = useMemo(() => value, [value]);
 
     return (
-      <Context.Provider value={memoizedValue}>{children}</Context.Provider>
+      <DynamicContext.Provider value={memoizedValue}>
+        {children}
+      </DynamicContext.Provider>
     );
   };
 
-  const useCustomContext = (): TContextValue => {
-    const ctx = useContext(Context);
+  const useDynamicContext = (): TContextValue => {
+    const ctx = useContext(DynamicContext);
 
     if (!ctx)
       throw new Error('Missing provider at the top of the component tree');
@@ -26,7 +28,7 @@ const context = <TValueHook extends () => any>(useValueHook: TValueHook) => {
     return ctx;
   };
 
-  return [Provider, useCustomContext] as const;
+  return [DynamicProvider, useDynamicContext] as const;
 };
 
 export { context };
