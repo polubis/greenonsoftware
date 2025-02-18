@@ -10,7 +10,9 @@ export default function DietPersonalizationForm() {
   const [step, setStep] = useState(1);
   const onSubmit = (data) => console.log(data);
 
-  const buttonStyle = 'w-full text-left bg-white rounded-lg p-4';
+  const buttonStyle = 'w-full text-left bg-white rounded-xl p-4 ';
+  const pStyle = ' font-[500]';
+  const descriptionStyle = 'text-md px-8';
 
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => (prev <= 1 ? 1 : prev - 1));
@@ -20,7 +22,7 @@ export default function DietPersonalizationForm() {
       case 1:
         return (
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold text-gray-700">
+            <label className="block mb-8 text-2xl font-semibold text-semibold">
               What's your goal?
             </label>
             <Controller
@@ -28,21 +30,32 @@ export default function DietPersonalizationForm() {
               control={control}
               defaultValue=""
               render={() => (
-                <div className="flex flex-col gap-4 text-left">
+                <div className="flex flex-col gap-2 text-left">
                   <button className={buttonStyle}>
-                    Lose weight{' '}
-                    <p>Stay motivated with delicious, wholesome meals</p>{' '}
+                    <div className="flex items-center gap-4">
+                      <div className="w-4 h-4 border rounded-full"></div>
+                      <p className={pStyle}> Lose weight </p>
+                    </div>
+                    <p className={descriptionStyle}>
+                      Stay motivated with delicious, wholesome meals
+                    </p>
                   </button>
                   <button className={buttonStyle}>
-                    Maintain weight{' '}
-                    <p>
+                    <div className="flex items-center gap-4">
+                      <div className="w-4 h-4 border rounded-full"></div>
+                      <p className={pStyle}> Maintain weight </p>
+                    </div>
+                    <p className={descriptionStyle}>
                       Enjoy balanced meals that boost energy and support your
                       health
                     </p>
                   </button>
                   <button className={buttonStyle}>
-                    Gain muscle{' '}
-                    <p>
+                    <div className="flex items-center gap-4">
+                      <div className="w-4 h-4 border rounded-full"></div>
+                      <p className={pStyle}> Gain muscle</p>
+                    </div>
+                    <p className={descriptionStyle}>
                       Increase strength and enhance your physical performance
                     </p>
                   </button>
@@ -54,23 +67,31 @@ export default function DietPersonalizationForm() {
       case 2:
         return (
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold text-gray-700">
-              Activity Level
+            <label className="block mb-8 text-2xl font-semibold text-semibold">
+             What's your biological sex?
             </label>
             <Controller
-              name="activityLevel"
+              name="goal"
               control={control}
               defaultValue=""
-              render={({ field }) => (
-                <select
-                  {...field}
-                  className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                >
-                  <option value="">Select...</option>
-                  <option value="sedentary">Sedentary</option>
-                  <option value="lightlyActive">Lightly Active</option>
-                  <option value="veryActive">Very Active</option>
-                </select>
+              render={() => (
+                <div className="flex flex-col gap-2 text-left">
+                  <button className={buttonStyle}>
+                    <div className="flex items-center gap-4">
+                      <div className="w-4 h-4 border rounded-full"></div>
+                      <p className={pStyle}> Male </p>
+                    </div>
+                 
+                  </button>
+                  <button  className={buttonStyle}>
+                    <div className="flex items-center gap-4">
+                      <div className="w-4 h-4 border rounded-full"></div>
+                      <p className={pStyle}> Female </p>
+                    </div>
+                 
+                  </button>
+              
+                </div>
               )}
             />
           </div>
@@ -127,7 +148,7 @@ export default function DietPersonalizationForm() {
   const progress = (step / 4) * 100;
 
   return (
-    <div className="flex flex-col max-h-screen">
+    <div className="relative flex flex-col max-h-screen">
       <HeaderWithBackArrow
         prevStep={() => {
           prevStep();
@@ -142,16 +163,16 @@ export default function DietPersonalizationForm() {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col h-full px-8 pt-6 pb-8 mb-4"
+        className="flex flex-col w-full h-full pt-6 mb-4"
       >
         {renderStep()}
       </form>
-      <div className="">
+      <div className="fixed bottom-0 left-0 w-full p-4">
         {step < 4 && (
           <button
             type="button"
             onClick={nextStep}
-            className="w-full px-4 py-4 font-bold text-white bg-black rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+            className="w-full px-4 py-4 font-bold text-white bg-black rounded-full"
           >
             Next
           </button>
