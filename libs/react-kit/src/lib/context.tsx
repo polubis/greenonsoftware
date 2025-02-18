@@ -6,8 +6,6 @@ const context = <TValueHook extends () => any>(useValueHook: TValueHook) => {
 
   const DynamicContext = createContext<TContextValue | null>(null);
 
-  DynamicContext.displayName = 'DynamicContext';
-
   const DynamicProvider = ({ children }: { children: ReactNode }) => {
     const value = useValueHook();
     const memoizedValue = useMemo(() => value, [value]);
