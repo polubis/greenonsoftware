@@ -87,6 +87,48 @@ const MyComponent = () => {
 
 - `defaultState` _(optional)_ - A function or value to initialize the state. Default is `{ is: 'off' }`.
 
+## 3. `context` - create memoized contexts with 0 boilerplate
+
+You can create context easier based on certain conditions if needed via following API (all strongly typed):
+
+```tsx
+// @@@ user.context.tsx @@@
+import { useState } from 'react';
+import { context } from '@greenonsoftware/react-kit';
+
+// Passing hook to determine logic and return value
+const [UserProvider, useUserContext] = context(() => {
+  const [counter, setCounter] = useState(0);
+
+  return { counter, setCounter };
+});
+
+// Exporting the provider for usage in the app
+export { UserProvider, useUserContext };
+
+// @@@ app.tsx @@@
+import React from 'react';
+import { UserProvider, useUserContext } from './user.context';
+
+const App = () => {
+  // Strongly typed
+  const { counter, setCounter } = useUserContext();
+
+  return (
+    <UserProvider>
+      <div>
+        <h1>Counter: {counter}</h1>
+        <button onClick={() => setCounter(10)}>Increment</button>
+      </div>
+    </UserProvider>
+  );
+};
+```
+
+### Parameters
+
+- `useValueHook` _(required)_ - A hook that contains the logic and returns the **Context value** to be propagated.
+
 ### License
 
 MIT License
