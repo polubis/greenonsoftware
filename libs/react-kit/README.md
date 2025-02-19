@@ -16,6 +16,12 @@ or
 yarn add @greenonsoftware/react-kit
 ```
 
+or via the **ShadCN** approach  
+
+1. Go to the [repository](https://github.com/polubis/greenonsoftware/tree/main/libs/react-kit/src/lib).  
+2. Copy the file containing the implemented utility (it is designed to be copied from a single file).  
+3. If you want to copy the tests as well, you can find them in the **__tests__** directory. The naming convention matches the utilities, so, for example, `use-feature.ts` has its tests under `__tests__/use-feature.test.ts`, and so on.
+
 ## 1. `useSimpleFeature` - show/hide UI and manage simple features
 
 This hook provides a simple way to manage a boolean state with easy-to-use functions to toggle, set, or reset the state.
