@@ -16,6 +16,19 @@ describe('context', () => {
     expect(result.current).toEqual([0, expect.any(Function)]);
   });
 
+  it('should allow option to set initial state', () => {
+    const useTestHook = (counter: number) => useState(counter);
+    const [TestProvider, useTestContext] = context(useTestHook);
+
+    const { result } = renderHook(() => useTestContext(), {
+      wrapper: ({ children }: { children: ReactNode }) => (
+        <TestProvider initialState={12}>{children}</TestProvider>
+      ),
+    });
+
+    expect(result.current).toEqual([12, expect.any(Function)]);
+  });
+
   it('should update the context value correctly', () => {
     const useTestHook = () => useState(0);
     const [TestProvider, useTestContext] = context(useTestHook);

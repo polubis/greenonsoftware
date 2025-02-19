@@ -87,47 +87,91 @@ const MyComponent = () => {
 
 - `defaultState` _(optional)_ - A function or value to initialize the state. Default is `{ is: 'off' }`.
 
-## 3. `context` - create memoized contexts with 0 boilerplate
+## 3. `context` - Create Memoized Contexts with Zero Boilerplate
 
-You can create context easier based on certain conditions if needed via following API (all strongly typed):
+> This mechanism follows best practices described in this article: [Common Mistakes in Using React Context API](https://greenonsoftware.com/articles/react/common-mistakes-in-using-react-context-api/).
+
+You can create a context more easily based on specific conditions using the following API—all strongly typed.
 
 ```tsx
 // @@@ user.context.tsx @@@
 import { useState } from 'react';
 import { context } from '@greenonsoftware/react-kit';
 
-// Passing hook to determine logic and return value
+// Passing a hook to define logic and return a value
 const [UserProvider, useUserContext] = context(() => {
   const [counter, setCounter] = useState(0);
 
   return { counter, setCounter };
 });
 
-// Exporting the provider for usage in the app
+// Exporting the provider for use in the app
 export { UserProvider, useUserContext };
 
 // @@@ app.tsx @@@
 import React from 'react';
 import { UserProvider, useUserContext } from './user.context';
 
-const App = () => {
+const UserView = () => {
   // Strongly typed
   const { counter, setCounter } = useUserContext();
 
   return (
-    <UserProvider>
-      <div>
-        <h1>Counter: {counter}</h1>
-        <button onClick={() => setCounter(10)}>Increment</button>
-      </div>
-    </UserProvider>
+    <div>
+      <h1>Counter: {counter}</h1>
+      <button onClick={() => setCounter(10)}>Increment</button>
+    </div>
   );
 };
+
+const ConnectedUserView = () => (
+  <UserProvider>
+    <UserView />
+  </UserProvider>
+);
+```
+
+If you want to pass an initial state, you can do so as follows:
+
+```tsx
+// @@@ user.context.tsx @@@
+import { useState } from 'react';
+import { context } from '@greenonsoftware/react-kit';
+
+// Assigning the value passed from "UserProvider"
+const [UserProvider, useUserContext] = context((initialCount: number) => {
+  const [counter, setCounter] = useState(initialCount);
+
+  return { counter, setCounter };
+});
+
+// @@@ app.tsx @@@
+import React from 'react';
+import { UserProvider, useUserContext } from './user.context';
+
+const UserView = () => {
+  const { counter, setCounter } = useUserContext();
+
+  return (
+    <div>
+      <h1>Counter: {counter}</h1>
+      <button onClick={() => setCounter(10)}>Increment</button>
+    </div>
+  );
+};
+
+const ConnectedUserView = () => (
+  // Passing an initial state
+  // may be also on server side, ...etc
+  <UserProvider initialState={12}>
+    <UserView />
+  </UserProvider>
+);
 ```
 
 ### Parameters
 
-- `useValueHook` _(required)_ - A hook that contains the logic and returns the **Context value** to be propagated.
+- `useValueHook` _(required)_ – A hook that defines the logic and returns the **context value** to be propagated. This hook accepts an **optional parameter** as a callback. If specified, you must provide the `initialState` property when rendering.
 
 ### License
 
