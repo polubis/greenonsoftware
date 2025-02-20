@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Slider from '@mui/material/Slider';
 import HeaderWithBackArrow from '../header-with-back-arrow/header-with-back-arrow';
+import WheelPicker from '../calendar/wheel-picker/wheel-picker';
 
 export default function DietPersonalizationForm() {
   const {
@@ -111,18 +112,10 @@ export default function DietPersonalizationForm() {
         return (
           <div className="mb-4">
             <label className="block mb-8 text-2xl font-semibold text-semibold">
-              Weight and Goal
+              What's your age?
             </label>
-            <div className="flex flex-col items-center">
-              <Slider
-                {...register('weightGoal', { required: true })}
-                defaultValue={50}
-                orientation="horizontal"
-                min={0}
-                max={100}
-                valueLabelDisplay="auto"
-                className="w-full"
-              />
+            <div className='mt-30'>
+              <WheelPicker />
             </div>
           </div>
         );
