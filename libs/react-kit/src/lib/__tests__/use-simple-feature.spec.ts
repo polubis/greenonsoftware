@@ -14,6 +14,26 @@ describe(useSimpleFeature.name, () => {
     expect(result.current.isOff).toBe(false);
   });
 
+  it('should assign passed visibility setter as initial', () => {
+    const { result } = renderHook(() => useSimpleFeature(() => true));
+    expect(result.current.isOn).toBe(true);
+    expect(result.current.isOff).toBe(false);
+
+    act(() => {
+      result.current.off();
+    });
+
+    expect(result.current.isOn).toBe(false);
+    expect(result.current.isOff).toBe(true);
+
+    act(() => {
+      result.current.reset();
+    });
+
+    expect(result.current.isOn).toBe(true);
+    expect(result.current.isOff).toBe(false);
+  });
+
   it('should turn on the feature', () => {
     const { result } = renderHook(() => useSimpleFeature());
     act(() => {
