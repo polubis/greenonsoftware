@@ -17,6 +17,12 @@ describe(useFeature.name, () => {
     );
   });
 
+  it('should allow to set initial visibility from calculation result', () => {
+    const { result } = renderHook(() => useFeature(() => ({ is: `off` })));
+
+    expect(result.current).toEqual(expect.objectContaining({ is: 'off' }));
+  });
+
   it('should be off by default', () => {
     const { result } = renderHook(() => useFeature());
     expect(result.current).toEqual(expect.objectContaining({ is: 'off' }));

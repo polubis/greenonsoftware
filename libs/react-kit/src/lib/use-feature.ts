@@ -6,35 +6,23 @@ type FeatureOnState<TData> = { is: `on`; data: TData };
 type FeatureOffState = { is: `off` };
 
 type FeatureState<TData> = FeatureOnState<TData> | FeatureOffState;
-type FeatureActions<TData> = {
-  on(data: TData): void;
-  off(): void;
-  reset(): void;
-  set(setter: Setter<FeatureState<TData>>): void;
-};
-type Feature<TData> = FeatureState<TData> & FeatureActions<TData>;
 
 const useFeature = <TData>(
   defaultState: Setter<FeatureState<TData>> = { is: `off` }
-): Feature<TData> => {
+) => {
   const [initState] = useState(defaultState);
   const [state, setState] = useState(initState);
 
   return useMemo(
     () => ({
       ...state,
-      on: (data: TData) => {
-        setState({ is: `on`, data });
-      },
+      on: (data: TData) => setState({ is: `on`, data }),
       set: setState,
-      off: () => {
-        setState({ is: `off` });
-      },
-      reset: () => {
-        setState(initState);
-      },
+      off: () => setState({ is: `off` }),
+      reset: () => setState(initState),
     }),
-    [state, initState]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [state]
   );
 };
 
