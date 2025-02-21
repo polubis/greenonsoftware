@@ -16,7 +16,8 @@ const useSimpleFeature = (defaultState: Setter<boolean> = false) => {
       toggle: () => setIsOn((prevIsOpen) => !prevIsOpen),
       reset: () => setIsOn(initState),
     }),
-    [isOn, initState]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isOn]
   );
 };
 
