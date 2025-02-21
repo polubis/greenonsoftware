@@ -2,19 +2,19 @@ import { renderHook, act } from '@testing-library/react';
 import { useSimpleFeature } from '../use-simple-feature';
 
 describe(`${useSimpleFeature.name}`, () => {
-  it('should return the correct initial state (default false)', () => {
+  it('should be off by default', () => {
     const { result } = renderHook(() => useSimpleFeature());
     expect(result.current.isOn).toBe(false);
     expect(result.current.isOff).toBe(true);
   });
 
-  it('should return the correct initial state when provided a default state', () => {
+  it('should assign passed visibility as initial', () => {
     const { result } = renderHook(() => useSimpleFeature(true));
     expect(result.current.isOn).toBe(true);
     expect(result.current.isOff).toBe(false);
   });
 
-  it('should turn on the feature when calling on()', () => {
+  it('should turn on the feature', () => {
     const { result } = renderHook(() => useSimpleFeature());
     act(() => {
       result.current.on();
@@ -23,7 +23,7 @@ describe(`${useSimpleFeature.name}`, () => {
     expect(result.current.isOff).toBe(false);
   });
 
-  it('should turn off the feature when calling off()', () => {
+  it('should turn off the feature', () => {
     const { result } = renderHook(() => useSimpleFeature(true));
     act(() => {
       result.current.off();
@@ -32,7 +32,7 @@ describe(`${useSimpleFeature.name}`, () => {
     expect(result.current.isOff).toBe(true);
   });
 
-  it('should toggle the state when calling toggle()', () => {
+  it('should toggle the feature', () => {
     const { result } = renderHook(() => useSimpleFeature());
     act(() => {
       result.current.toggle();
@@ -44,7 +44,7 @@ describe(`${useSimpleFeature.name}`, () => {
     expect(result.current.isOn).toBe(false);
   });
 
-  it('should reset to the initial state when calling reset()', () => {
+  it('should reset to the initial visibility', () => {
     const { result } = renderHook(() => useSimpleFeature(true));
     act(() => {
       result.current.off();
@@ -56,7 +56,7 @@ describe(`${useSimpleFeature.name}`, () => {
     expect(result.current.isOn).toBe(true);
   });
 
-  it('should allow setting the state directly', () => {
+  it('should allow to override', () => {
     const { result } = renderHook(() => useSimpleFeature());
     act(() => {
       result.current.set(true);
