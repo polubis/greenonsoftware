@@ -2,7 +2,7 @@
 
 A collection of first-class React hooks to enhance your application's functionality with minimal setup.
 
-## Installation
+## Installation & Setup
 
 You can install the package using npm or yarn:
 
@@ -15,6 +15,11 @@ or
 ```bash
 yarn add @greenonsoftware/react-kit
 ```
+
+or via the **ShadCN** approach
+
+1. Go to the [repository](https://github.com/polubis/greenonsoftware/tree/main/libs/react-kit/src/lib).
+2. Copy the file containing the implemented utility (it is designed to be copied from a single file). In addition, you can copy test file. As is 100% isolated from other files.
 
 ## 1. `useSimpleFeature` - show/hide UI and manage simple features
 
@@ -30,6 +35,7 @@ const MyComponent = (props: { flag: boolean }) => {
   // or with the result as complex initial calculations
   const modal = useSimpleFeature(calculateFlag);
   // or based on the properties from component
+  const modal = useSimpleFeature(props.flag);
   const modal = useSimpleFeature(() => props.flag);
 
   return (
@@ -64,6 +70,7 @@ const MyComponent = () => {
   // or with initial state
   const feature = useFeature({ is: 'on', data: 42 });
   // or dynamically
+  const feature = useFeature({ is: 'off' });
   const feature = useFeature(() => ({ is: 'off' }));
 
   if (feature.is === `on`) {
@@ -86,6 +93,105 @@ const MyComponent = () => {
 ### Parameters
 
 - `defaultState` _(optional)_ - A function or value to initialize the state. Default is `{ is: 'off' }`.
+
+## 3. `context` - Create Memoized Contexts with Zero Boilerplate
+
+> This mechanism follows best practices described in this article: [Common Mistakes in Using React Context API](https://greenonsoftware.com/articles/react/common-mistakes-in-using-react-context-api/).
+
+You can create a context more easily based on specific conditions using the following API—all strongly typed.
+
+```tsx
+// @@@ user.context.tsx @@@
+import { useState } from 'react';
+import { context } from '@greenonsoftware/react-kit';
+
+// Passing a hook to define logic and return a value
+const [UserProvider, useUserContext] = context(() => {
+  const [counter, setCounter] = useState(0);
+
+  return { counter, setCounter };
+});
+
+// Exporting the provider for use in the app
+export { UserProvider, useUserContext };
+
+// @@@ app.tsx @@@
+import React from 'react';
+import { UserProvider, useUserContext } from './user.context';
+
+const UserView = () => {
+  // Strongly typed
+  const { counter, setCounter } = useUserContext();
+
+  return (
+    <div>
+      <h1>Counter: {counter}</h1>
+      <button onClick={() => setCounter(10)}>Increment</button>
+    </div>
+  );
+};
+
+const ConnectedUserView = () => (
+  <UserProvider>
+    <UserView />
+  </UserProvider>
+);
+```
+
+If you want to pass an initial state, you can do so as follows:
+
+```tsx
+// @@@ user.context.tsx @@@
+import { useState } from 'react';
+import { context } from '@greenonsoftware/react-kit';
+
+// Assigning the value passed from "UserProvider"
+const [UserProvider, useUserContext] = context((initialState: number) => {
+  const [counter, setCounter] = useState(initialState);
+
+  return { counter, setCounter };
+});
+
+// @@@ app.tsx @@@
+import React from 'react';
+import { UserProvider, useUserContext } from './user.context';
+
+const UserView = () => {
+  const { counter, setCounter } = useUserContext();
+
+  return (
+    <div>
+      <h1>Counter: {counter}</h1>
+      <button onClick={() => setCounter(10)}>Increment</button>
+    </div>
+  );
+};
+
+const ConnectedUserView = () => (
+  // Passing an initial state
+  // may be also on server side, ...etc
+  <UserProvider initialState={12}>
+    <UserView />
+  </UserProvider>
+);
+```
+
+### Parameters
+
+- **`useValueHook`** _(required)_ – A hook that defines the logic and returns the **context value** to be propagated. This hook can accept an **optional parameter** as a callback. If specified, you must pass `initialState` property to provider.
+
+  ```tsx
+  // When specifying arguments in the callback
+  const [SomeProvider, useSomeContext] = context((initialState: string) => {
+    console.log(initialState); // Prints 1 and "something"
+    // any additional logic...
+  });
+
+  // TypeScript enforces passing these arguments as props to the provider
+  <SomeProvider initialState="something">
+    <SomeOtherComponent />
+  </SomeProvider>
+  ```
 
 ### License
 

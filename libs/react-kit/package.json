@@ -1,6 +1,6 @@
 {
   "name": "@greenonsoftware/react-kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A comprehensive React solutions toolkit for building modern web applications",
   "main": "./index.js",
   "types": "./index.d.ts",
