@@ -2,7 +2,7 @@
 
 A collection of first-class React hooks to enhance your application's functionality with minimal setup.
 
-## Installation
+## Installation & Setup
 
 You can install the package using npm or yarn:
 
@@ -16,11 +16,10 @@ or
 yarn add @greenonsoftware/react-kit
 ```
 
-or via the **ShadCN** approach  
+or via the **ShadCN** approach
 
-1. Go to the [repository](https://github.com/polubis/greenonsoftware/tree/main/libs/react-kit/src/lib).  
-2. Copy the file containing the implemented utility (it is designed to be copied from a single file).  
-3. If you want to copy the tests as well, you can find them in the **__tests__** directory. The naming convention matches the utilities, so, for example, `use-feature.ts` has its tests under `__tests__/use-feature.test.ts`, and so on.
+1. Go to the [repository](https://github.com/polubis/greenonsoftware/tree/main/libs/react-kit/src/lib).
+2. Copy the file containing the implemented utility (it is designed to be copied from a single file). In addition, you can copy test file. As is 100% isolated from other files.
 
 ## 1. `useSimpleFeature` - show/hide UI and manage simple features
 
@@ -36,6 +35,7 @@ const MyComponent = (props: { flag: boolean }) => {
   // or with the result as complex initial calculations
   const modal = useSimpleFeature(calculateFlag);
   // or based on the properties from component
+  const modal = useSimpleFeature(props.flag);
   const modal = useSimpleFeature(() => props.flag);
 
   return (
@@ -70,6 +70,7 @@ const MyComponent = () => {
   // or with initial state
   const feature = useFeature({ is: 'on', data: 42 });
   // or dynamically
+  const feature = useFeature({ is: 'off' });
   const feature = useFeature(() => ({ is: 'off' }));
 
   if (feature.is === `on`) {
@@ -177,7 +178,21 @@ const ConnectedUserView = () => (
 
 ### Parameters
 
-- `useValueHook` _(required)_ – A hook that defines the logic and returns the **context value** to be propagated. This hook accepts an **optional parameter** as a callback. If specified, you must provide the `initialState` property when rendering.
+- **`useValueHook`** _(required)_ – A hook that defines the logic and returns the **context value** to be propagated. This hook can accept an **optional parameter** as a callback. If specified, you must pass all arguments to the created provider. 
+
+  ```tsx
+  // When specifying arguments in the callback
+  const [SomeProvider, useSomeContext] = context((a: number, b: string) => {
+    console.log(a, b); // Prints 1 and "something"
+    // any additional logic...
+  });
+
+  // TypeScript enforces passing these arguments as props to the provider
+  <SomeProvider a={1} b="something">
+    <SomeOtherComponent />
+  </SomeProvider>;
+  ```  
+
 
 ### License
 
