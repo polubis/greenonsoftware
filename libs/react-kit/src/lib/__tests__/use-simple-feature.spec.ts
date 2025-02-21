@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react';
 import { useSimpleFeature } from '../use-simple-feature';
 
-describe(`${useSimpleFeature.name}`, () => {
+describe(useSimpleFeature.name, () => {
   it('should be off by default', () => {
     const { result } = renderHook(() => useSimpleFeature());
     expect(result.current.isOn).toBe(false);
