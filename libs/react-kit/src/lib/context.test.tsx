@@ -2,8 +2,8 @@ import { renderHook, act } from '@testing-library/react';
 import { context } from './context';
 import { ReactNode, useState } from 'react';
 
-describe('context', () => {
-  it('should provide the correct context value', () => {
+describe(context.name, () => {
+  it('provides the correct context value', () => {
     const useTestHook = () => useState(0);
     const [TestProvider, useTestContext] = context(useTestHook);
 
@@ -16,7 +16,7 @@ describe('context', () => {
     expect(result.current).toEqual([0, expect.any(Function)]);
   });
 
-  it('should allow option to set initial state', () => {
+  it('allows to set to initial state', () => {
     const useTestHook = (counter: number) => useState(counter);
     const [TestProvider, useTestContext] = context(useTestHook);
 
@@ -29,7 +29,7 @@ describe('context', () => {
     expect(result.current).toEqual([12, expect.any(Function)]);
   });
 
-  it('should update the context value correctly', () => {
+  it('updates the context value', () => {
     const useTestHook = () => useState(0);
     const [TestProvider, useTestContext] = context(useTestHook);
 
@@ -46,7 +46,7 @@ describe('context', () => {
     expect(result.current).toEqual([1, expect.any(Function)]);
   });
 
-  it('should correctly manage and update the counter inside the provider', () => {
+  it('managing and updating counter inside provider', () => {
     const useCounterHook = () => {
       const [counter, setCounter] = useState(0);
       return { counter, setCounter };
@@ -75,7 +75,7 @@ describe('context', () => {
     expect(result.current.counter).toBe(2);
   });
 
-  it('should throw an error when used outside of a provider', () => {
+  it('throws an error when used outside of a provider', () => {
     const useTestHook = () => useState(0);
     const [, useTestContext] = context(useTestHook);
 

@@ -2,19 +2,19 @@ import { renderHook, act } from '@testing-library/react';
 import { useSimpleFeature } from './use-simple-feature';
 
 describe(useSimpleFeature.name, () => {
-  it('should be off by default', () => {
+  it('is off by default', () => {
     const { result } = renderHook(() => useSimpleFeature());
     expect(result.current.isOn).toBe(false);
     expect(result.current.isOff).toBe(true);
   });
 
-  it('should assign passed visibility as initial', () => {
+  it('assigns passed visibility value as initial', () => {
     const { result } = renderHook(() => useSimpleFeature(true));
     expect(result.current.isOn).toBe(true);
     expect(result.current.isOff).toBe(false);
   });
 
-  it('should assign passed visibility setter as initial', () => {
+  it('assigns passed visibility function as initial', () => {
     const { result } = renderHook(() => useSimpleFeature(() => true));
     expect(result.current.isOn).toBe(true);
     expect(result.current.isOff).toBe(false);
@@ -34,7 +34,7 @@ describe(useSimpleFeature.name, () => {
     expect(result.current.isOff).toBe(false);
   });
 
-  it('should turn on the feature', () => {
+  it('turns on the feature', () => {
     const { result } = renderHook(() => useSimpleFeature());
     act(() => {
       result.current.on();
@@ -43,7 +43,7 @@ describe(useSimpleFeature.name, () => {
     expect(result.current.isOff).toBe(false);
   });
 
-  it('should turn off the feature', () => {
+  it('turns off the feature', () => {
     const { result } = renderHook(() => useSimpleFeature(true));
     act(() => {
       result.current.off();
@@ -52,7 +52,7 @@ describe(useSimpleFeature.name, () => {
     expect(result.current.isOff).toBe(true);
   });
 
-  it('should toggle the feature', () => {
+  it('toggles the feature', () => {
     const { result } = renderHook(() => useSimpleFeature());
     act(() => {
       result.current.toggle();
@@ -64,7 +64,7 @@ describe(useSimpleFeature.name, () => {
     expect(result.current.isOn).toBe(false);
   });
 
-  it('should reset to the initial visibility', () => {
+  it('resets to the initial visibility', () => {
     const { result } = renderHook(() => useSimpleFeature(true));
     act(() => {
       result.current.off();
@@ -76,7 +76,7 @@ describe(useSimpleFeature.name, () => {
     expect(result.current.isOn).toBe(true);
   });
 
-  it('should allow to override', () => {
+  it('allows to override', () => {
     const { result } = renderHook(() => useSimpleFeature());
     act(() => {
       result.current.set(true);
