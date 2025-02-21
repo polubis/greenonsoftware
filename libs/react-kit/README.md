@@ -146,8 +146,8 @@ import { useState } from 'react';
 import { context } from '@greenonsoftware/react-kit';
 
 // Assigning the value passed from "UserProvider"
-const [UserProvider, useUserContext] = context((initialCount: number) => {
-  const [counter, setCounter] = useState(initialCount);
+const [UserProvider, useUserContext] = context((initialState: number) => {
+  const [counter, setCounter] = useState(initialState);
 
   return { counter, setCounter };
 });
@@ -178,21 +178,20 @@ const ConnectedUserView = () => (
 
 ### Parameters
 
-- **`useValueHook`** _(required)_ – A hook that defines the logic and returns the **context value** to be propagated. This hook can accept an **optional parameter** as a callback. If specified, you must pass all arguments to the created provider. 
+- **`useValueHook`** _(required)_ – A hook that defines the logic and returns the **context value** to be propagated. This hook can accept an **optional parameter** as a callback. If specified, you must pass `initialState` property to provider.
 
   ```tsx
   // When specifying arguments in the callback
-  const [SomeProvider, useSomeContext] = context((a: number, b: string) => {
-    console.log(a, b); // Prints 1 and "something"
+  const [SomeProvider, useSomeContext] = context((initialState: string) => {
+    console.log(initialState); // Prints 1 and "something"
     // any additional logic...
   });
 
   // TypeScript enforces passing these arguments as props to the provider
-  <SomeProvider a={1} b="something">
+  <SomeProvider initialState="something">
     <SomeOtherComponent />
-  </SomeProvider>;
-  ```  
-
+  </SomeProvider>
+  ```
 
 ### License
 
