@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Slider from '@mui/material/Slider';
 import HeaderWithBackArrow from '../header-with-back-arrow/header-with-back-arrow';
 import WheelPicker from '../calendar/wheel-picker/wheel-picker';
 
@@ -115,7 +114,7 @@ export default function DietPersonalizationForm() {
               What's your age?
             </label>
             <div className='mt-30'>
-              <WheelPicker />
+              <WheelPicker status='age' result='' />
             </div>
           </div>
         );
@@ -123,18 +122,32 @@ export default function DietPersonalizationForm() {
         return (
           <div className="mb-4">
             <label className="block mb-8 text-2xl font-semibold text-semibold">
-              Age
+              What's your height?
             </label>
-            <div className="flex flex-col items-center">
-              <Slider
-                {...register('age', { required: true })}
-                defaultValue={25}
-                orientation="horizontal"
-                min={0}
-                max={100}
-                valueLabelDisplay="auto"
-                className="w-full"
-              />
+            <div className="mt-30">
+              <WheelPicker status="height" result="" />
+            </div>
+          </div>
+        );
+      case 5:
+        return (
+          <div className="mb-4">
+            <label className="block mb-8 text-2xl font-semibold text-semibold">
+              What's your weight?
+            </label>
+            <div className="mt-30">
+              <WheelPicker status="weight" result="" />
+            </div>
+          </div>
+        );
+      case 6:
+        return (
+          <div className="mb-4">
+            <label className="block mb-8 text-2xl font-semibold text-semibold">
+              What's your current goal?
+            </label>
+            <div className="mt-30">
+              <WheelPicker status="goal" result="" />
             </div>
           </div>
         );
@@ -143,7 +156,7 @@ export default function DietPersonalizationForm() {
     }
   };
 
-  const progress = (step / 4) * 100;
+  const progress = (step / 6) * 100;
 
   return (
     <div className="relative flex flex-col max-h-screen">
@@ -156,7 +169,7 @@ export default function DietPersonalizationForm() {
       <div className="w-full h-1 my-4 rounded-lg progress-bar bg-lime-100">
         <div
           style={{ width: `${progress}%` }}
-          className="h-full rounded-md bg-lime-300"
+          className="h-full transition-all rounded-md duration-600 bg-lime-300"
         ></div>
       </div>
       <form
@@ -166,7 +179,7 @@ export default function DietPersonalizationForm() {
         {renderStep()}
       </form>
       <div className="fixed bottom-0 left-0 w-full p-4">
-        {step < 4 && (
+        {step < 6 && (
           <button
             type="button"
             onClick={nextStep}
@@ -178,7 +191,7 @@ export default function DietPersonalizationForm() {
             Next
           </button>
         )}
-        {step === 4 && (
+        {step === 6 && (
           <button
             onClick={() => handleSubmit(onSubmit)()}
             type="submit"
