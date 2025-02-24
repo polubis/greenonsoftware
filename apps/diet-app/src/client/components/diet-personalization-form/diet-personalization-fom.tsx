@@ -4,13 +4,18 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import HeaderWithBackArrow from '../header-with-back-arrow/header-with-back-arrow';
 import WheelPicker from '../calendar/wheel-picker/wheel-picker';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { dietPersonalizationSchema } from 'apps/diet-app/lib/schema';
 
 export default function DietPersonalizationForm() {
   const {
     register,
     handleSubmit,
     formState: { isValid },
-  } = useForm({ mode: 'onChange' });
+  } = useForm({
+    resolver: zodResolver(dietPersonalizationSchema),
+    mode: 'onChange',
+  });
 
   const [step, setStep] = useState(1);
   const [age, setAge] = useState('');
