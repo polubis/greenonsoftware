@@ -6,45 +6,33 @@ import {
 import React, { useEffect, useState } from 'react';
 import Picker from 'react-mobile-picker';
 
-export default function WheelPicker({ status, result }: WheelPickerProps) {
-  const [currStatus, setCurrStatus] = useState('');
-  const age: string[] = [];
-  for (let i = 5; i < 99; i++) {
-    age.push(i.toString());
-  }
+export default function WheelPicker({ status, onChange }: WheelPickerProps) {
+  const [currStatus, setCurrStatus] = useState(status);
+
+  const age: string[] = Array.from({ length: 94 }, (_, i) =>
+    (i + 5).toString()
+  );
 
   const selections: { [key: string]: string[] } = {
-    age: age,
+    age,
   };
 
   const [pickerValue, setPickerValue] = useState<WheelPickerState>({
     age: '69',
   });
 
+  
   useEffect(() => {
-    setCurrStatus(() => status);
+    if (onChange) {
+      onChange(pickerValue.age);
+    }
+  }, [pickerValue, onChange]);
 
+  useEffect(() => {
     if (status !== currStatus) {
-      handleStatusChange(status);
+      setCurrStatus(status);
     }
-  }, [status]);
-
-  const handleStatusChange = (newValue: string) => {
-    switch (newValue) {
-      case 'age':
-        setCurrStatus('age');
-        break;
-      case 'weight':
-        setCurrStatus('weight');
-        break;
-      case 'height':
-        setCurrStatus('height');
-        break;
-      case 'goal':
-        setCurrStatus('goal');
-        break;
-    }
-  };
+  }, [status, currStatus]);
 
   return (
     <div>
@@ -63,19 +51,18 @@ export default function WheelPicker({ status, result }: WheelPickerProps) {
                 <Picker.Item
                   className={`${
                     pickerValue.age === option
-                      ? 'text-4xl text-black '
-                      : ' text-gray-300 text-sm'
+                      ? 'text-4xl text-black'
+                      : 'text-gray-300 text-sm'
                   } transition-all duration-300`}
                   value={option}
                 >
                   {option}
                   {currStatus === 'height' ? (
                     <p className="ml-2 text-lg"> cm</p>
-                  ) : currStatus === 'goal' || currStatus === 'weight' ? (
+                  ) : null}
+                  {currStatus === 'goal' || currStatus === 'weight' ? (
                     <p className="ml-2 text-lg"> kg</p>
-                  ) : (
-                    currStatus === 'age' && ''
-                  )}
+                  ) : null}
                 </Picker.Item>
               </div>
             ))}

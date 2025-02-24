@@ -11,11 +11,23 @@ export default function DietPersonalizationForm() {
     handleSubmit,
     formState: { isValid },
   } = useForm({ mode: 'onChange' });
+
   const [step, setStep] = useState(1);
-  const onSubmit = (data) => console.log(data);
+  const [age, setAge] = useState('');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [goal, setGoal] = useState('');
+
+  const onSubmit = (data: any) => {
+    console.log('Form data:', data);
+    console.log('Age:', age);
+    console.log('Height:', height);
+    console.log('Weight:', weight);
+    console.log('Goal:', goal);
+  };
 
   const buttonStyle = 'w-full text-left bg-white rounded-xl p-4 ';
-  const pStyle = ' font-[500]';
+  const pStyle = 'font-[500]';
   const descriptionStyle = 'text-md px-8';
 
   const nextStep = () => setStep((prev) => prev + 1);
@@ -26,7 +38,7 @@ export default function DietPersonalizationForm() {
       case 1:
         return (
           <div className="mb-4">
-            <label className="block mb-8 text-2xl font-semibold text-semibold">
+            <label className="block mb-8 text-2xl font-semibold">
               What's your goal?
             </label>
             <div className="flex flex-col gap-2 text-left">
@@ -38,7 +50,7 @@ export default function DietPersonalizationForm() {
                     {...register('goal', { required: true })}
                     className="w-4 h-4 border rounded-full"
                   />
-                  <p className={pStyle}> Lose weight </p>
+                  <p className={pStyle}>Lose weight</p>
                 </div>
                 <p className={descriptionStyle}>
                   Stay motivated with delicious, wholesome meals
@@ -52,10 +64,10 @@ export default function DietPersonalizationForm() {
                     {...register('goal', { required: true })}
                     className="w-4 h-4 border rounded-full"
                   />
-                  <p className={pStyle}> Maintain weight </p>
+                  <p className={pStyle}>Maintain weight</p>
                 </div>
                 <p className={descriptionStyle}>
-                  Enjoy balanced meals that boost energy and support your health
+                  Enjoy balanced meals that boost energy and health
                 </p>
               </label>
               <label className={buttonStyle}>
@@ -66,10 +78,10 @@ export default function DietPersonalizationForm() {
                     {...register('goal', { required: true })}
                     className="w-4 h-4 border rounded-full"
                   />
-                  <p className={pStyle}> Gain muscle</p>
+                  <p className={pStyle}>Gain muscle</p>
                 </div>
                 <p className={descriptionStyle}>
-                  Increase strength and enhance your physical performance
+                  Increase strength and enhance your performance
                 </p>
               </label>
             </div>
@@ -78,7 +90,7 @@ export default function DietPersonalizationForm() {
       case 2:
         return (
           <div className="mb-4">
-            <label className="block mb-8 text-2xl font-semibold text-semibold">
+            <label className="block mb-8 text-2xl font-semibold">
               What's your biological sex?
             </label>
             <div className="flex flex-col gap-2 text-left">
@@ -90,7 +102,7 @@ export default function DietPersonalizationForm() {
                     {...register('sex', { required: true })}
                     className="w-4 h-4 border rounded-full"
                   />
-                  <p className={pStyle}> Male </p>
+                  <p className={pStyle}>Male</p>
                 </div>
               </label>
               <label className={buttonStyle}>
@@ -101,7 +113,7 @@ export default function DietPersonalizationForm() {
                     {...register('sex', { required: true })}
                     className="w-4 h-4 border rounded-full"
                   />
-                  <p className={pStyle}> Female </p>
+                  <p className={pStyle}>Female</p>
                 </div>
               </label>
             </div>
@@ -110,45 +122,37 @@ export default function DietPersonalizationForm() {
       case 3:
         return (
           <div className="mb-4">
-            <label className="block mb-8 text-2xl font-semibold text-semibold">
+            <label className="block mb-8 text-2xl font-semibold">
               What's your age?
             </label>
-            <div className='mt-30'>
-              <WheelPicker status='age' result='' />
-            </div>
+            <WheelPicker status="age" onChange={setAge} />
           </div>
         );
       case 4:
         return (
           <div className="mb-4">
-            <label className="block mb-8 text-2xl font-semibold text-semibold">
+            <label className="block mb-8 text-2xl font-semibold">
               What's your height?
             </label>
-            <div className="mt-30">
-              <WheelPicker status="height" result="" />
-            </div>
+            <WheelPicker status="height" onChange={setHeight} />
           </div>
         );
       case 5:
         return (
           <div className="mb-4">
-            <label className="block mb-8 text-2xl font-semibold text-semibold">
+            <label className="block mb-8 text-2xl font-semibold">
               What's your weight?
             </label>
-            <div className="mt-30">
-              <WheelPicker status="weight" result="" />
-            </div>
+            <WheelPicker status="weight" onChange={setWeight} />
           </div>
         );
       case 6:
         return (
           <div className="mb-4">
-            <label className="block mb-8 text-2xl font-semibold text-semibold">
+            <label className="block mb-8 text-2xl font-semibold">
               What's your current goal?
             </label>
-            <div className="mt-30">
-              <WheelPicker status="goal" result="" />
-            </div>
+            <WheelPicker status="goal" onChange={setGoal} />
           </div>
         );
       default:
@@ -160,12 +164,7 @@ export default function DietPersonalizationForm() {
 
   return (
     <div className="relative flex flex-col max-h-screen">
-      <HeaderWithBackArrow
-        prevStep={() => {
-          prevStep();
-        }}
-        title="Personalize your diet"
-      />
+      <HeaderWithBackArrow prevStep={prevStep} title="Personalize your diet" />
       <div className="w-full h-1 my-4 rounded-lg progress-bar bg-lime-100">
         <div
           style={{ width: `${progress}%` }}

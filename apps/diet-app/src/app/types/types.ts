@@ -1,6 +1,6 @@
 export type WheelPickerProps = {
   status: string;
-  result: string;
+  onChange?: (value: string) => void;
 };
 
 export type WheelPickerState = {
