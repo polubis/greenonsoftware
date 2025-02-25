@@ -8,16 +8,18 @@ import Meal from '../../client/components/single-meal/single-meal';
 
 export default function CalendarDay() {
   return (
-    <div>
+    <div className="pb-20 bg-gray-100">
       <Wrapper>
-        <Nav />
-        <Calendar />
-        <CaloriesBar />
-        <Meal mealType='breakfast' />
-        <Meal mealType='lunch' />
-        <Meal mealType='lunch' />
-        <Meal mealType='dinner' />
-        <Footer />
+        <div className="flex flex-col gap-4 ">
+          <Nav />
+          <Calendar />
+          <CaloriesBar />
+          <Meal mealType="breakfast" />
+          <Meal mealType="lunch" />
+          <Meal mealType="lunch" />
+          <Meal mealType="dinner" />
+          <Footer />
+        </div>
       </Wrapper>
     </div>
   );
