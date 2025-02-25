@@ -1,10 +1,16 @@
 'use client';
-import {
-  WheelPickerProps,
-  WheelPickerState,
-} from 'apps/diet-app/src/app/types/types';
+
 import React, { useEffect, useState } from 'react';
 import Picker from 'react-mobile-picker';
+
+type WheelPickerProps = {
+  status: string;
+  onChange?: (value: string) => void;
+};
+
+type WheelPickerState = {
+  age: string;
+};
 
 export default function WheelPicker({ status, onChange }: WheelPickerProps) {
   const [currStatus, setCurrStatus] = useState(status);
@@ -21,7 +27,6 @@ export default function WheelPicker({ status, onChange }: WheelPickerProps) {
     age: '69',
   });
 
-  
   useEffect(() => {
     if (onChange) {
       onChange(pickerValue.age);
