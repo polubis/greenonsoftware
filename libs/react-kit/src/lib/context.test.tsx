@@ -1,13 +1,30 @@
 import { renderHook, act } from '@testing-library/react';
 import { context } from './context';
 import { ReactNode, useState } from 'react';
+import { expectTypeOf } from 'vitest';
 
 describe(context.name, () => {
-  // it('displays error when invalid hook argument passed', () => {
-  //   const [Provider] = context((counter: number) => undefined);
+  it('displays error when invalid hook argument passed', () => {
+    const [Provider] = context((counter: number) => undefined);
 
-  //   <Provider counter={12}>div</Provider>
-  // });
+    expectTypeOf(Provider).toBeFunction();
+    expectTypeOf(Provider).parameter(0).toMatchTypeOf<
+      'ERROR: The hook must accept single object as an argument or no arguments at all' & {
+        children: ReactNode;
+      }
+    >();
+  });
+
+  it('catching type errors', () => {
+    const [Provider] = context((props: { counter: number }) => props.counter);
+
+    expectTypeOf(Provider).parameter(0).toMatchTypeOf<{
+      counter: number;
+      children: ReactNode;
+    }>();
+    // @ts-expect-error - counter should be number, not string
+    Provider({ counter: '12' })
+  });
 
   it('provides the correct context value', () => {
     const useTestHook = () => useState(0);
