@@ -2,11 +2,12 @@ import { createContext, useContext, type ReactNode } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const context = <THook extends (...args: any[]) => any>(useHook: THook) => {
-  type THookProps = Parameters<THook>[0] extends undefined
+  type THookFirstParam = Parameters<THook>[0];
+  type THookProps = THookFirstParam extends undefined
     ? object
-    : Parameters<THook>[0] extends object
-    ? Parameters<THook>[0]
-    : never;
+    : THookFirstParam extends object
+    ? THookFirstParam
+    : `ERROR: The hook must accept single object as an argument or no arguments at all`;
   type THookReturn = ReturnType<THook>;
 
   const DynamicContext = createContext<THookReturn | null>(null);

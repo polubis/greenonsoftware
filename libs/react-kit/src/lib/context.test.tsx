@@ -4,6 +4,10 @@ import { ReactNode, useState } from 'react';
 
 describe(context.name, () => {
   it('provides the correct context value', () => {
+    context((counter: number) => undefined);
+  });
+
+  it('provides the correct context value', () => {
     const useTestHook = () => useState(0);
     const [TestProvider, useTestContext] = context(useTestHook);
 
