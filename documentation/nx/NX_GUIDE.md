@@ -158,3 +158,19 @@ nx g @nx/react:library libs/my-hooks \
 4. Change directory to via `cd libs/name-of-lib`, and run `npm publish --access public`
 
 ## FAQs
+
+1. How to force running tests with TypeCheck?
+
+```json
+// Add following things to vite.config.ts
+  test: {
+    watch: false,
+    globals: true,
+    environment: 'jsdom',
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    reporters: ['default'],
+    typecheck: {
+      enabled: true,
+      include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    },
+```
