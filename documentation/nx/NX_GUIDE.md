@@ -52,7 +52,7 @@ npm i dep --save --legacy-peer-deps
 1. Go to directory with `package.json`.
 2. Type command: `nx g @nx/next:application apps/todo` to generate Next app.
 3. To show list of projects you can type `nx show projects`.
-4. To run all applications you can type following: `nx run-many -t dev`. If you want to run single app, you can do it like that: `nx dev kalinka`. [Here](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial#testing-and-linting-running-multiple-tasks) is more about options.
+4. To run all applications you can type following: `nx run-many -t dev` or `nx run-many -t test --projects=react-kit,todo`. If you want to run single app, you can do it like that: `nx dev kalinka`. [Here](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial#testing-and-linting-running-multiple-tasks) is more about options.
 5. To build an app you can type: `nx build app-name`.
 6. To run prod builded app you can type: ``.
 
@@ -158,3 +158,19 @@ nx g @nx/react:library libs/my-hooks \
 4. Change directory to via `cd libs/name-of-lib`, and run `npm publish --access public`
 
 ## FAQs
+
+1. How to force running tests with TypeCheck?
+
+```json
+// Add following things to vite.config.ts
+  test: {
+    watch: false,
+    globals: true,
+    environment: 'jsdom',
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    reporters: ['default'],
+    typecheck: {
+      enabled: true,
+      include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    },
+```

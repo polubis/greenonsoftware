@@ -52,7 +52,7 @@ const MyComponent = (props: { flag: boolean }) => {
 
 ### Parameters
 
-- `defaultState` _(optional)_ - A function or value to initialize the state. Default is `false`.
+- `defaultState` _(optional)_ - A setter to initialize the state. Default is `false`.
 
 ## 2. `useFeature` - Manage feature state with additional data
 
@@ -92,9 +92,9 @@ const MyComponent = () => {
 
 ### Parameters
 
-- `defaultState` _(optional)_ - A function or value to initialize the state. Default is `{ is: 'off' }`.
+- `defaultState` _(optional)_ - A setter to initialize the state. Default is `{ is: 'off' }`.
 
-## 3. `context` - Create Memoized Contexts with Zero Boilerplate
+## 3. `context` - Create Contexts with Zero Boilerplate
 
 > This mechanism follows best practices described in this article: [Common Mistakes in Using React Context API](https://greenonsoftware.com/articles/react/common-mistakes-in-using-react-context-api/).
 
@@ -106,14 +106,11 @@ import { useState } from 'react';
 import { context } from '@greenonsoftware/react-kit';
 
 // Passing a hook to define logic and return a value
-const [UserProvider, useUserContext] = context(() => {
+export const [UserProvider, useUserContext] = context(() => {
   const [counter, setCounter] = useState(0);
 
   return { counter, setCounter };
 });
-
-// Exporting the provider for use in the app
-export { UserProvider, useUserContext };
 
 // @@@ app.tsx @@@
 import React from 'react';
@@ -138,7 +135,7 @@ const ConnectedUserView = () => (
 );
 ```
 
-If you want to pass an initial state, you can do so as follows:
+If you want to pass initial properties to **Provider** do it as follows:
 
 ```tsx
 // @@@ user.context.tsx @@@
@@ -146,8 +143,8 @@ import { useState } from 'react';
 import { context } from '@greenonsoftware/react-kit';
 
 // Assigning the value passed from "UserProvider"
-const [UserProvider, useUserContext] = context((initialState: number) => {
-  const [counter, setCounter] = useState(initialState);
+export const [UserProvider, useUserContext] = context((props: { initialCounter: number }) => {
+  const [counter, setCounter] = useState(props.initialCounter);
 
   return { counter, setCounter };
 });
@@ -170,19 +167,31 @@ const UserView = () => {
 const ConnectedUserView = () => (
   // Passing an initial state
   // may be also on server side, ...etc
-  <UserProvider initialState={12}>
+  <UserProvider initialCounter={12}>
     <UserView />
   </UserProvider>
 );
 ```
 
+Last, if you need to memoize things do it at hook level:
+
+```tsx
+const useCounter = (props: { initialCounter: number }) => {
+  const [counter, setCounter] = useState(props.initialCounter);
+
+  return useMemo(() => ({ counter, setCounter }), [counter]);
+};
+
+export const [UserProvider, useUserContext] = context(useCounter);
+```
+
 ### Parameters
 
-- **`useValueHook`** _(required)_ – A hook that defines the logic and returns the **context value** to be propagated. This hook can accept an **optional parameter** as a callback. If specified, you must pass `initialState` property to provider.
+- **`useHook`** _(required)_ – A hook that defines the logic and returns the **context value** to be propagated. This hook can accept an **optional parameter** as a callback. If specified, you must pass `props` to provider.
 
   ```tsx
   // When specifying arguments in the callback
-  const [SomeProvider, useSomeContext] = context((initialState: string) => {
+  const [SomeProvider, useSomeContext] = context(({ initialState }: { initialState: string }) => {
     console.log(initialState); // Prints 1 and "something"
     // any additional logic...
   });
@@ -190,7 +199,7 @@ const ConnectedUserView = () => (
   // TypeScript enforces passing these arguments as props to the provider
   <SomeProvider initialState="something">
     <SomeOtherComponent />
-  </SomeProvider>
+  </SomeProvider>;
   ```
 
 ### License

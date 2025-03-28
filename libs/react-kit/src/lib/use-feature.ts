@@ -26,4 +26,5 @@ const useFeature = <TData>(
   );
 };
 
+export type { FeatureOnState, FeatureOffState, FeatureState };
 export { useFeature };
