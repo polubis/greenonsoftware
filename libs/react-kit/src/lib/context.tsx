@@ -41,3 +41,32 @@ const context = <TValueHook extends (...args: any[]) => any>(
 };
 
 export { context };
+
+// // 1. Without props
+// const [CounterProvider, useCounterContext] = context(() => {
+//   const [counter, setCounter] = useState();
+
+//   return { counter, setCounter };
+// });
+
+// // 2. With props
+// const [CounterProvider, useCounterContext] = context(
+//   ({ initialCounter }: { initialCounter: number }) => {
+//     const [counter, setCounter] = useState(initialCounter);
+
+//     return { counter, setCounter };
+//   }
+// );
+
+// // 3. With props that overrides -> omits children: string
+// const [CounterProvider, useCounterContext] = context(
+//   ({ initialCounter }: { initialCounter: number; children: string }) => {
+//     const [counter, setCounter] = useState(initialCounter);
+
+//     return { counter, setCounter };
+//   }
+// );
+
+// <CounterProvider initialCounter={10}>
+//   <div></div>
+// </CounterProvider>;
