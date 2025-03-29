@@ -170,3 +170,7 @@ nx g @nx/react:library vibetest --directory=libs/vibetest --importPath=@greenons
       include: ['src/**/*.{test,spec}.{ts,tsx}'],
     },
 ```
+
+2. I cannot use `nx` without `npx`.
+
+Just install `nx` globally via `npm install -g nx@latest`
