@@ -49,7 +49,7 @@ const vibetest = <TConfig extends VibetestConfig>(config: TConfig) => {
 
   if (config.mode === 'gherkin' && config.engine === 'cypress') {
     return <TCommands extends GherkinCommands>(commands: TCommands) =>
-      new Gherkin(commands).given;
+      new Gherkin(commands).background;
   }
 
   throw Error(`Unsupported mode and engine combination passed to vibetest.`);

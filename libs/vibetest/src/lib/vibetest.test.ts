@@ -15,7 +15,7 @@ describe(vibetest.name, () => {
         const seeTextSpy = vi.fn();
         const result: string[] = [];
 
-        const given = gherkin({
+        const background = gherkin({
           'click button': (title: string) => {
             clickSpy(title);
             result.push('click button');
@@ -34,11 +34,11 @@ describe(vibetest.name, () => {
           },
         });
 
-        given('click button', 'sign-in')
-          .when('type in input', 'username', 'hello')
+        background('click button', 'sign-in')
+          .given('type in input', 'username', 'hello')
           .and('type in input', 'password', 'hello')
           .then('see text', 'welcome to the app')
-          .and('see text', 'account details')
+          .or('see text', 'account details')
           .when('go to home page')
           .then('see text', 'home page');
 
