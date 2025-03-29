@@ -22,6 +22,7 @@ class Gherkin<TCommands extends GherkinCommands> {
     return this;
   };
 
+  background = this.runCommand;
   given = this.runCommand;
   when = this.runCommand;
   then = this.runCommand;
@@ -46,8 +47,12 @@ const vibetest = <TConfig extends VibetestConfig>(config: TConfig) => {
     );
   }
 
-  return <TCommands extends GherkinCommands>(commands: TCommands) =>
-    new Gherkin(commands).given;
+  if (config.mode === 'gherkin' && config.engine === 'cypress') {
+    return <TCommands extends GherkinCommands>(commands: TCommands) =>
+      new Gherkin(commands).given;
+  }
+
+  throw Error(`Unsupported mode and engine combination passed to vibetest.`);
 };
 
 export { vibetest };
