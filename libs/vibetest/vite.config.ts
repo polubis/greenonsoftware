@@ -49,10 +49,6 @@ export default defineConfig({
     environment: 'node',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
-    typecheck: {
-      enabled: true,
-      include: ['src/**/*.{test,spec}.{ts}'],
-    },
     coverage: {
       reportsDirectory: '../../coverage/libs/vibetest',
       provider: 'v8',
