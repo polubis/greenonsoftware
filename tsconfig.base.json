@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@greenonsoftware/c": ["libs/c/src/index.ts"],
-      "@greenonsoftware/react-kit": ["libs/react-kit/src/index.ts"]
+      "@greenonsoftware/react-kit": ["libs/react-kit/src/index.ts"],
+      "@greenonsoftware/vibetest": ["libs/vibetest/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

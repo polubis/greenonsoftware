@@ -146,11 +146,7 @@ npm i dep --save --legacy-peer-deps
 1. Run
 
 ```cmd
-nx g @nx/react:library libs/my-hooks \
-  --directory=packages \
-  --importPath=@yourorg/my-hooks \
-  --publishable \
-  --buildable
+nx g @nx/react:library vibetest --directory=libs/vibetest --importPath=@greenonsoftware/vibetest --publishable --buildable
 ```
 
 2. Run `nx build name-of-lib`.
