@@ -1,7 +1,7 @@
 {
   "name": "@greenonsoftware/vibetest",
   "version": "0.0.1",
-  "description": "A natural language-driven E2E testing framework supporting multiple testing libraries",
+  "description": "A test interpreter that gives you vibe testing experience",
   "dependencies": {},
   "main": "./index.js",
   "module": "./index.mjs",
