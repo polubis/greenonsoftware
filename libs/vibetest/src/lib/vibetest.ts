@@ -9,6 +9,7 @@ type VibetestConfig = {
   engine: VibetestEngine;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type GherkinCommands = Record<string, (...args: any[]) => void>;
 
 class Gherkin<TCommands extends GherkinCommands> {
