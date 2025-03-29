@@ -1,0 +1,32 @@
+{
+  "name": "@greenonsoftware/vibetest",
+  "version": "0.0.1",
+  "description": "A test interpreter that gives you vibe testing experience",
+  "dependencies": {},
+  "main": "./index.js",
+  "module": "./index.mjs",
+  "typings": "./index.d.ts",
+  "keywords": [
+    "testing",
+    "e2e",
+    "gherkin",
+    "typescript",
+    "playwright",
+    "cypress",
+    "bdd",
+    "automation"
+  ],
+  "author": "GreenOn Software (Adrian Połubiński)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polubis/greenonsoftware.git"
+  },
+  "bugs": {
+    "url": "https://github.com/polubis/greenonsoftware/issues"
+  },
+  "homepage": "https://github.com/polubis/greenonsoftware/tree/main/libs/vibetest",
+  "publishConfig": {
+    "access": "public"
+  }
+}
