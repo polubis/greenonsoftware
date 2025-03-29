@@ -1,1 +1,1 @@
-export * from './lib/vibetest';
+export * from './lib/gherkin';
