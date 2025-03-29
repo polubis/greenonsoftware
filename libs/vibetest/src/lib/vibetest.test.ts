@@ -1,6 +1,26 @@
 import { vibetest } from './vibetest';
 
 describe(vibetest.name, () => {
+  it('fails when unsupported mode is passed', () => {
+    expect(() =>
+      vibetest({
+        // @ts-expect-error - error should be thrown because unsupported mode is passed
+        mode: 'unsupported',
+        engine: 'cypress',
+      })
+    ).toThrow();
+  });
+
+  it('fails when unsupported engine is passed', () => {
+    expect(() =>
+      vibetest({
+        mode: 'gherkin',
+        // @ts-expect-error - error should be thrown because unsupported engine is passed
+        engine: 'unsupported',
+      })
+    ).toThrow();
+  });
+
   describe(`for Cypress engine`, () => {
     describe('works with Gherkin when', () => {
       it('runs sequence of commands in ascending order', () => {
