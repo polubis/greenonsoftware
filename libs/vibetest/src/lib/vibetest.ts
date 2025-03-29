@@ -53,7 +53,7 @@ const vibetest = <TConfig extends VibetestConfig>(config: TConfig) => {
       new Gherkin(commands).background;
   }
 
-  throw Error(`Unsupported mode and engine combination passed to vibetest.`);
+  throw Error(`Unsupported mode and engine combination passed to vibetest`);
 };
 
 export { vibetest };
