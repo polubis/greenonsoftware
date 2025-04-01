@@ -1,6 +1,6 @@
-import { c } from '@greenonsoftware/c';
 import React from 'react';
 import { Calendar } from './components/calendar';
+import { clsx } from 'clsx';
 
 const enum BoardItemStatus {
   ToDo = 'TO_DO',
@@ -106,7 +106,7 @@ export default function Index() {
       <section className="p-4">
         <ul className="grid gap-4">
           {board.map(({ id, title, items, classes, opened }) => (
-            <li key={id} className={c(`rounded-xl p-4`, classes)}>
+            <li key={id} className={clsx(`rounded-xl p-4`, classes)}>
               <h5 className="text-xl font-bold">
                 {title} ({items.length})
               </h5>
