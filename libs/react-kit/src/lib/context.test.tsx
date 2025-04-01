@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react';
+import { renderHook, act, render } from '@testing-library/react';
 import { context } from './context';
 import { ReactNode, useState } from 'react';
 import { expectTypeOf } from 'vitest';
@@ -22,8 +22,13 @@ describe(context.name, () => {
       counter: number;
       children: ReactNode;
     }>();
-    // @ts-expect-error - counter should be number, not string
-    Provider({ counter: '12' })
+
+    render(
+      // @ts-expect-error - counter should be number, not string
+      <Provider counter="12">
+        <div></div>
+      </Provider>
+    );
   });
 
   it('provides the correct context value', () => {
