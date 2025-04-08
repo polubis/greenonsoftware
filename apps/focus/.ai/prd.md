@@ -1,6 +1,6 @@
-# **Dokument wymagań produktu (PRD) - 4focus (MVP)**
+# Dokument wymagań produktu (PRD) - 4focus (MVP)
 
-## **Spis treści**
+## Spis treści
 1. Przegląd projektu
 2. Problem użytkownika
 3. Wymagania funkcjonalne
@@ -8,15 +8,11 @@
 5. Historie użytkownika
 6. Metryki sukcesu
 
----
-
-## **1. Przegląd projektu**
+## 1. Przegląd projektu
 
 Aplikacja **4focus** (w wersji **MVP** - Minimum Viable Product) to narzędzie typu **Progressive Web App (PWA)** z responsywnym interfejsem (**RWD**), zaprojektowane w celu pomocy użytkownikom, w szczególności osobom z **ADHD** lub trudnościami w skupieniu, w organizacji codziennych zadań. Aplikacja wykorzystuje **Macierz Eisenhowera** do kategoryzacji zadań, pomagając w priorytetyzacji. Użytkownicy mogą przeglądać zadania w widoku kalendarza (dziennym, tygodniowym, miesięcznym lub niestandardowym), dodawać nowe zadania poprzez prosty interfejs oraz zarządzać ich statusem, w tym korzystać z **Trybu Skupienia** podczas wykonywania zadania. Celem **MVP** jest dostarczenie podstawowej funkcjonalności planowania i śledzenia zadań z naciskiem na prostotę i szybkość działania, dostępnej na urządzeniach mobilnych i desktopowych poprzez przeglądarkę internetową. Autoryzacja odbywa się za pomocą konta **Google**.
 
----
-
-## **2. Problem użytkownika**
+## 2. Problem użytkownika
 
 Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze skupieniem się na konkretnych czynnościach i efektywnym zarządzaniem czasem, co jest szczególnie powszechne u osób z **ADHD**, ale dotyka również szerokiego grona osób poszukujących prostych narzędzi do organizacji. Istniejące narzędzia mogą być zbyt skomplikowane, rozpraszające lub nie dostarczać odpowiedniej struktury priorytetyzacji oraz wsparcia w trakcie wykonywania zadania. Użytkownicy potrzebują prostego, intuicyjnego systemu, który pomoże im:
 
@@ -28,16 +24,14 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 
 **4focus MVP** ma na celu dostarczenie takiego właśnie narzędzia, koncentrując się na **Macierzy Eisenhowera** jako podstawowej metodzie organizacji oraz wprowadzając mechanizmy wspierające skupienie.
 
----
+## 3. Wymagania funkcjonalne
 
-## **3. Wymagania funkcjonalne**
-
-### **3.1. Autoryzacja i Zarządzanie Kontem (AUTH)**
+### 3.1. Autoryzacja i Zarządzanie Kontem (AUTH)
 *   **FR-AUTH-001:** Użytkownik musi mieć możliwość zarejestrowania się i zalogowania do aplikacji wyłącznie za pomocą swojego konta **Google**.
 *   **FR-AUTH-002:** Aplikacja powinna bezpiecznie przechowywać podstawowe informacje o użytkowniku uzyskane z Google (ID, email, ewentualnie imię) w celu powiązania zadań z kontem.
 *   **FR-AUTH-003:** Użytkownik musi mieć możliwość wylogowania się z aplikacji.
 
-### **3.2. Zarządzanie Zadaniami (CRUD) (TASK)**
+### 3.2. Zarządzanie Zadaniami (CRUD) (TASK)
 *   **FR-TASK-001:** Użytkownik musi mieć możliwość szybkiego dodania nowego zadania poprzez formularz zawierający pola:
     *   Nazwa zadania (pole wymagane)
     *   Opis zadania (pole opcjonalne)
@@ -48,7 +42,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **FR-TASK-005:** Użytkownik musi mieć możliwość zmiany statusu zadania poprzez interakcję z elementem zadania na liście (np. kliknięcie przycisku/ikony statusu lub samego zadania). Przepływ statusów to: **TODO** -> **PENDING** -> **DONE**.
 *   **FR-TASK-006:** Dla zadań ze statusem **DONE**, aplikacja musi wyświetlać czas, jaki upłynął od momentu zmiany statusu na **PENDING** do momentu zmiany statusu na **DONE**.
 
-### **3.3. Widok Kalendarza i Listy Zadań (VIEW)**
+### 3.3. Widok Kalendarza i Listy Zadań (VIEW)
 *   **FR-VIEW-001:** Aplikacja musi prezentować interfejs kalendarza.
 *   **FR-VIEW-002:** Użytkownik musi mieć możliwość przełączania widoku kalendarza pomiędzy: **Dzień**, **Tydzień**, **Miesiąc**.
 *   **FR-VIEW-003:** Użytkownik musi mieć możliwość wybrania niestandardowego zakresu dat do wyświetlenia (opcjonalnie, za pomocą date-range pickera).
@@ -57,7 +51,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **FR-VIEW-006:** Zadania na liście muszą być pogrupowane według kategorii **Macierzy Eisenhowera** (1. Pilne/Ważne, 2. Ważne/Niepilne, 3. Pilne/Nieważne, 4. Nieważne/Niepilne) i posortowane wewnątrz grup po aktualnym statusie.
 *   **FR-VIEW-007:** Użytkownik musi mieć możliwość podstawowego filtrowania listy zadań (kryteria do ustalenia, np. po statusie, kategorii).
 
-### **3.4. Interfejs Użytkownika i Platforma (UI)**
+### 3.4. Interfejs Użytkownika i Platforma (UI)
 *   **FR-UI-001:** Aplikacja musi być typu **Progressive Web App (PWA)**.
 *   **FR-UI-002:** Interfejs użytkownika musi być responsywny (**RWD**) i dostosowywać się do różnych rozmiarów ekranów (mobilne, desktopowe).
 *   **FR-UI-003:** Interfejs powinien być minimalistyczny, z ograniczoną paletą kolorów i dobrym kontrastem, aby minimalizować rozpraszanie.
@@ -69,14 +63,12 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
     *   Przy próbie opuszczenia Trybu Skupienia przed oznaczeniem zadania jako **DONE** (np. przez nawigację wstecz, próbę zamknięcia aplikacji/karty), wyświetlić komunikat ostrzegawczy zniechęcający do przerwania (np. "Skupienie na jednym zadaniu pomaga w efektywności. Czy na pewno chcesz teraz przerwać?").
     *   Po oznaczeniu zadania jako **DONE** z poziomu Trybu Skupienia, aplikacja powinna powrócić do standardowego widoku (np. listy zadań).
 
-### **3.5. Prywatność (PRIV)**
+### 3.5. Prywatność (PRIV)
 *   **FR-PRIV-001:** Aplikacja musi posiadać i udostępniać użytkownikowi **Politykę Prywatności** oraz informację o wykorzystywaniu **cookies**, zgodnie z obowiązującymi przepisami (np. RODO), szczególnie w kontekście logowania Google i przechowywania danych zadań.
 
----
+## 4. Granice projektu
 
-## **4. Granice projektu**
-
-### **4.1. W zakresie MVP (Minimum Viable Product)**
+### 4.1. W zakresie MVP (Minimum Viable Product)
 *   Funkcjonalności opisane w sekcji **3. Wymagania funkcjonalne**.
 *   Logowanie wyłącznie przez **Google** (**FR-AUTH-001**).
 *   Podstawowe operacje **CRUD** na zadaniach (**FR-TASK-001**, **FR-TASK-002**, **FR-TASK-003**).
@@ -91,7 +83,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **Tryb Skupienia (Focus Mode Screen)** dla zadań **PENDING** (**FR-UI-004**).
 *   Podstawowe śledzenie analityczne (**Google Analytics**) dla metryk sukcesu.
 
-### **4.2. Poza zakresem MVP**
+### 4.2. Poza zakresem MVP
 *   Raporty postępów użytkownika.
 *   Dodawanie zadań za pomocą interfejsu głosowego.
 *   Asystent AI do rozbijania kontekstu na zadania.
@@ -107,13 +99,11 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   Dynamiczna regulacja wysokości widoku kalendarza/listy zadań.
 *   Zaawansowane opcje konfiguracji Trybu Skupienia (np. wybór animacji, dźwięków tła).
 
----
+## 5. Historie użytkownika
 
-## **5. Historie użytkownika**
+### 5.1. Autoryzacja i Dostęp (AUTH)
 
-### **5.1. Autoryzacja i Dostęp (AUTH)**
-
-#### **US-AUTH-001: Logowanie/Rejestracja przez Google**
+#### US-AUTH-001: Logowanie/Rejestracja przez Google
 **Opis:** Jako nowy lub powracający użytkownik, chcę móc zalogować się lub zarejestrować w aplikacji za pomocą mojego konta **Google**, aby uzyskać dostęp do moich zadań bez potrzeby tworzenia nowego konta.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik znajduje się na ekranie logowania/startowym aplikacji.
@@ -124,7 +114,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **And:** W przypadku błędu autoryzacji Google, użytkownik zobaczy stosowny komunikat błędu.
 *(Odnosi się do: FR-AUTH-001, FR-AUTH-002)*
 
-#### **US-AUTH-002: Wylogowanie**
+#### US-AUTH-002: Wylogowanie
 **Opis:** Jako zalogowany użytkownik, chcę móc się wylogować z aplikacji, aby zakończyć moją sesję i zabezpieczyć dostęp do moich danych.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany w aplikacji.
@@ -133,9 +123,9 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **And:** Użytkownik zostanie przekierowany do ekranu logowania/startowego.
 *(Odnosi się do: FR-AUTH-003)*
 
-### **5.2. Zarządzanie Zadaniami (TASK)**
+### 5.2. Zarządzanie Zadaniami (TASK)
 
-#### **US-TASK-001: Dodawanie nowego zadania**
+#### US-TASK-001: Dodawanie nowego zadania
 **Opis:** Jako użytkownik, chcę móc szybko dodać nowe zadanie, podając jego nazwę i wybierając kategorię wg **Macierzy Eisenhowera**, abym mógł łatwo wprowadzać swoje obowiązki do systemu.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany i znajduje się w głównym widoku aplikacji.
@@ -150,7 +140,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **And:** Jeśli wymagane pola (nazwa, kategoria) nie zostaną wypełnione, użytkownik zobaczy komunikat błędu i zadanie nie zostanie dodane.
 *(Odnosi się do: FR-TASK-001, FR-TASK-004)*
 
-#### **US-TASK-002: Edycja istniejącego zadania**
+#### US-TASK-002: Edycja istniejącego zadania
 **Opis:** Jako użytkownik, chcę móc edytować istniejące zadanie (zmienić jego nazwę, opis lub kategorię **Macierzy Eisenhowera**), aby móc aktualizować informacje o zadaniu lub poprawić błędy.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany i widzi listę swoich zadań.
@@ -161,7 +151,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **And:** Zaktualizowane zadanie zostanie wyświetlone na liście zadań z nowymi danymi i w odpowiedniej kategorii.
 *(Odnosi się do: FR-TASK-002)*
 
-#### **US-TASK-003: Usuwanie istniejącego zadania**
+#### US-TASK-003: Usuwanie istniejącego zadania
 **Opis:** Jako użytkownik, chcę móc usunąć zadanie, którego już nie potrzebuję lub które zostało dodane przez pomyłkę, aby utrzymać porządek na mojej liście zadań.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany i widzi listę swoich zadań.
@@ -171,7 +161,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **And:** Zadanie zniknie z listy zadań.
 *(Odnosi się do: FR-TASK-003)*
 
-#### **US-TASK-004: Zmiana statusu zadania na "W trakcie" (PENDING) i wejście w Tryb Skupienia**
+#### US-TASK-004: Zmiana statusu zadania na "W trakcie" (PENDING) i wejście w Tryb Skupienia
 **Opis:** Jako użytkownik, chcę móc oznaczyć zadanie jako "**W trakcie**" (**PENDING**), kiedy rozpocznę nad nim pracę, aby śledzić aktywne zadania, umożliwić pomiar czasu ich wykonania **oraz przejść do widoku wspomagającego koncentrację.**
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany i widzi zadanie ze statusem **TODO** na liście.
@@ -182,7 +172,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   *(Uwaga: Poprzednia wizualna reprezentacja zadania na liście może nie być od razu widoczna, gdyż użytkownik przechodzi do innego widoku).*
 *(Odnosi się do: FR-TASK-004, FR-TASK-005, FR-TASK-006, FR-UI-004)*
 
-#### **US-TASK-005: Zmiana statusu zadania na "Zakończone" (DONE)**
+#### US-TASK-005: Zmiana statusu zadania na "Zakończone" (DONE)
 **Opis:** Jako użytkownik, chcę móc oznaczyć zadanie jako "**Zakończone**" (**DONE**), kiedy je ukończę (czy to z listy zadań, czy z Trybu Skupienia), aby móc śledzić postępy i oznaczyć zadanie jako niewymagające dalszej uwagi.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany i widzi zadanie ze statusem **PENDING** (na liście lub w Trybie Skupienia).
@@ -194,9 +184,9 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **And:** Obliczony czas trwania zadania (od **PENDING** do **DONE**) zostanie wyświetlony przy zakończonym zadaniu na liście.
 *(Odnosi się do: FR-TASK-004, FR-TASK-005, FR-TASK-006, FR-UI-004)*
 
-### **5.3. Przeglądanie Zadań i Kalendarza (VIEW)**
+### 5.3. Przeglądanie Zadań i Kalendarza (VIEW)
 
-#### **US-VIEW-001: Wyświetlanie zadań w widoku dziennym**
+#### US-VIEW-001: Wyświetlanie zadań w widoku dziennym
 **Opis:** Jako użytkownik, chcę móc zobaczyć wszystkie moje zadania zaplanowane na dzisiaj, pogrupowane według kategorii **Macierzy Eisenhowera**, abym mógł skupić się na priorytetach dnia bieżącego.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany w aplikacji i nie jest w Trybie Skupienia.
@@ -207,7 +197,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **And:** Każde zadanie na liście będzie wizualnie oznaczone swoją kategorią (**FR-VIEW-005**).
 *   **And:** Jeśli na dany dzień nie ma zadań, zostanie wyświetlony odpowiedni komunikat (np. "Brak zadań na dzisiaj").
 
-#### **US-VIEW-002: Przełączanie widoków kalendarza (Tydzień, Miesiąc)**
+#### US-VIEW-002: Przełączanie widoków kalendarza (Tydzień, Miesiąc)
 **Opis:** Jako użytkownik, chcę móc przełączać widok kalendarza pomiędzy **dniem**, **tygodniem** i **miesiącem**, aby uzyskać różną perspektywę na moje zaplanowane zadania.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany, nie jest w Trybie Skupienia i widzi widok kalendarza (np. dzienny).
@@ -218,7 +208,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **Then:** Aplikacja wyświetli widok kalendarza dla bieżącego miesiąca (**FR-VIEW-001**, **FR-VIEW-002**).
 *   **And:** Poniżej zostanie wyświetlona lista zadań przypisanych do tego miesiąca, pogrupowana i posortowana wg kategorii (**FR-VIEW-004**, **FR-VIEW-006**).
 
-#### **US-VIEW-003: Wyświetlanie zadań dla niestandardowego zakresu dat (Opcjonalne)**
+#### US-VIEW-003: Wyświetlanie zadań dla niestandardowego zakresu dat (Opcjonalne)
 **Opis:** Jako użytkownik, chcę móc wybrać niestandardowy zakres dat w kalendarzu, aby zobaczyć zadania zaplanowane w tym konkretnym okresie.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany, nie jest w Trybie Skupienia i widzi widok kalendarza.
@@ -226,7 +216,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **Then:** Aplikacja wyświetli widok kalendarza obejmujący wybrany zakres (**FR-VIEW-001**, **FR-VIEW-003**).
 *   **And:** Poniżej zostanie wyświetlona lista zadań przypisanych do wybranego zakresu dat, pogrupowana i posortowana wg kategorii (**FR-VIEW-004**, **FR-VIEW-006**).
 
-#### **US-VIEW-004: Wizualne rozróżnienie kategorii Eisenhowera**
+#### US-VIEW-004: Wizualne rozróżnienie kategorii Eisenhowera
 **Opis:** Jako użytkownik, przeglądając listę zadań, chcę móc łatwo odróżnić zadania należące do różnych kategorii **Macierzy Eisenhowera** (np. za pomocą kolorów lub etykiet), aby szybko ocenić ich priorytet.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany, nie jest w Trybie Skupienia i widzi listę zadań.
@@ -234,7 +224,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **Then:** Każde zadanie na liście ma wyraźne wizualne oznaczenie swojej kategorii (np. kolor tła, pasek boczny w kolorze kategorii, etykieta tekstowa) (**FR-VIEW-005**).
 *   **And:** Systematyka oznaczeń jest spójna dla wszystkich zadań tej samej kategorii.
 
-#### **US-VIEW-005: Filtrowanie zadań na liście**
+#### US-VIEW-005: Filtrowanie zadań na liście
 **Opis:** Jako użytkownik, chcę móc filtrować wyświetlaną listę zadań według podstawowych kryteriów (np. statusu, kategorii), aby skupić się na określonym podzbiorze zadań.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik jest zalogowany, nie jest w Trybie Skupienia i widzi listę zadań.
@@ -243,9 +233,9 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **And:** Użytkownik ma możliwość wyczyszczenia filtrów i powrotu do widoku wszystkich zadań dla danego okresu.
 *   *(Uwaga: Dokładne kryteria i mechanizm filtrowania wymagają doprecyzowania).*
 
-### **5.4. Platforma i UI (UI)**
+### 5.4. Platforma i UI (UI)
 
-#### **US-UI-001: Responsywność interfejsu**
+#### US-UI-001: Responsywność interfejsu
 **Opis:** Jako użytkownik, chcę móc korzystać z aplikacji zarówno na moim telefonie komórkowym, jak i na komputerze stacjonarnym, a interfejs (w tym Tryb Skupienia) powinien dostosować się do rozmiaru ekranu, zapewniając wygodną obsługę.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik otwiera aplikację w przeglądarce na urządzeniu mobilnym (różne popularne rozdzielczości).
@@ -254,7 +244,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **Then:** Interfejs aplikacji (standardowy i Tryb Skupienia) wykorzystuje dostępną przestrzeń, jest czytelny i w pełni funkcjonalny (**FR-UI-002**, **FR-UI-003**, **FR-UI-004**).
 *   **And:** Wszystkie funkcjonalności (dodawanie, edycja, zmiana statusu, przeglądanie, filtrowanie, Tryb Skupienia, logowanie/wylogowanie) są dostępne i działają poprawnie na obu typach urządzeń (**FR-UI-001**).
 
-#### **US-UI-002: Dostęp do Polityki Prywatności**
+#### US-UI-002: Dostęp do Polityki Prywatności
 **Opis:** Jako użytkownik, chcę mieć łatwy dostęp do **Polityki Prywatności** aplikacji, aby zrozumieć, jakie dane są zbierane i jak są wykorzystywane.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik korzysta z aplikacji (zalogowany lub niezalogowany).
@@ -262,7 +252,7 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **Then:** Link do **Polityki Prywatności** jest łatwo dostępny.
 *   **And:** Kliknięcie linku otwiera stronę/dokument z treścią **Polityki Prywatności** (**FR-PRIV-001**).
 
-#### **US-UI-003: Wejście w Tryb Skupienia i praca nad zadaniem (NOWE)**
+#### US-UI-003: Wejście w Tryb Skupienia i praca nad zadaniem (NOWE)
 **Opis:** Jako użytkownik, który właśnie rozpoczął pracę nad zadaniem (oznaczył je jako **PENDING**), chcę, aby aplikacja przeszła w dedykowany **Tryb Skupienia** z minimalistycznym interfejsem i animacją, abym mógł się w pełni skoncentrować na wykonywanej czynności bez rozpraszaczy i otrzymać ostrzeżenie, jeśli spróbuję go opuścić przed zakończeniem.
 **Kryteria akceptacji:**
 *   **Given:** Użytkownik widzi zadanie ze statusem **TODO** na liście.
@@ -280,19 +270,3 @@ Głównym problemem, który adresuje aplikacja **4focus**, są trudności ze sku
 *   **And:** **Tryb Skupienia** zostaje zamknięty.
 *   **And:** Użytkownik powraca do standardowego widoku aplikacji (np. listy zadań).
 *(Odnosi się do: FR-UI-004, FR-TASK-005)*
-
----
-
-## **6. Metryki sukcesu**
-
-Sukces **MVP** aplikacji **4focus** będzie mierzony za pomocą następujących kluczowych wskaźników, śledzonych głównie za pomocą **Google Analytics**:
-
-1.  **Aktywacja użytkowników:**
-    *   **Cel:** Pozyskanie **200 unikalnych użytkowników**, którzy założą konto (zalogują się przez Google) w ciągu **pierwszego tygodnia (7 dni)** od oficjalnego uruchomienia aplikacji.
-    *   **Pomiar:** Liczba unikalnych identyfikatorów użytkowników zarejestrowanych w systemie (powiązanych z logowaniem Google) w okresie pierwszych 7 dni od startu. Zdarzenie w GA: `` `signup_google_complete` ``. (Powiązane z **FR-AUTH-001**, **US-AUTH-001**)
-
-2.  **Retencja użytkowników:**
-    *   **Cel:** Utrzymanie **75% aktywności** wśród kohorty pierwszych 200 zarejestrowanych użytkowników po **jednym miesiącu (30 dni)** od momentu ich rejestracji.
-    *   **Pomiar:** Procent użytkowników z kohorty pierwszych 200 zarejestrowanych, którzy wykonali co najmniej jedną z kluczowych akcji (np. zalogowanie się, dodanie zadania, zmiana statusu zadania na **DONE**) w okresie pomiędzy 24 a 30 dniem po swojej dacie rejestracji.
-    *   Kluczowe zdarzenia do śledzenia w GA dla pomiaru aktywności: `` `login` `` (**US-AUTH-001**), `` `task_created` `` (**US-TASK-001**), `` `task_status_changed_to_done` `` (**US-TASK-005**).
-    *   *(Uwaga: Dokładna formuła obliczania retencji i precyzyjne nazwy zdarzeń w GA wymagają finalnego potwierdzenia).*
